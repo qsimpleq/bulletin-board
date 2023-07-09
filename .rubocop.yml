@@ -1,0 +1,35 @@
+require:
+  - rubocop-capybara
+  - rubocop-minitest
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-slim
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2
+  Exclude:
+    - 'bin/{bundle,dev,rails,rake,setup}'
+    - 'db/schema.rb'
+    - 'lib/tasks/auto_annotate_models.rake'
+    - 'lib/templates/slim/scaffold/_form.html.slim'
+    - 'script/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/initializers/simple_form_bootstrap.rb'
+Layout/LineLength:
+  Max: 120
+  AllowedPatterns:
+    - '\s*# .+'
+Metrics/MethodLength:
+  Enabled: false
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
+Style/AsciiComments:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/MethodCallWithArgsParentheses:
+  EnforcedStyle: require_parentheses
