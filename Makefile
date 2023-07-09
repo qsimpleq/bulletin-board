@@ -16,6 +16,8 @@ dev:
 erb2slim:
 	bundle exec erb2slim app/views/ -d --trace
 
+fixer: erb2slim lint-rubocop-fiX
+
 lint: lint-rubocop lint-templates
 
 lint-i18n:
