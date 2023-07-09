@@ -1,2 +1,2 @@
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/qsimpleq/rails-project-65/workflows/hexlet-check/badge.svg)](https://github.com/qsimpleq/rails-project-65/actions)
+а[![Actions Status](https://github.com/qsimpleq/rails-project-65/workflows/hexlet-check/badge.svg)](https://github.com/qsimpleq/rails-project-65/actions)
