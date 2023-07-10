@@ -44,6 +44,7 @@ end
 group :development, :test do
   gem 'annotate' # Adds model attributes/routes to top of model files/routes file
   gem 'debug', platforms: %i[mri mingw x64_mingw] # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'dotenv-rails'
   gem 'faker'
   gem 'html2slim', github: 'slim-template/html2slim'
   gem 'i18n-tasks', require: false

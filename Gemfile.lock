@@ -129,6 +129,10 @@ GEM
     devise-i18n (1.11.0)
       devise (>= 4.9.0)
     docile (1.4.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     execjs (2.8.1)
     faker (3.2.0)
@@ -425,6 +429,7 @@ DEPENDENCIES
   devise (~> 4.9)
   devise-bootstrap-views
   devise-i18n
+  dotenv-rails
   faker
   html2slim!
   i18n-tasks
