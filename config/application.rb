@@ -13,6 +13,13 @@ module RailsProject65
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.use_transactional_fixtures = true
+    config.use_instantiated_fixtures = false
+
+    config.after_initialize do
+      ActionDispatch::Flash::FlashHash.include(FlashDecorator)
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
