@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
+# Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  post 'auth/:provider', to: 'auth#request', as: :auth_request
+  get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  scope module: :web do
+    # Defines the root path route ("/")
+    root 'categories#index'
+    resources :categories
+  end
 end
