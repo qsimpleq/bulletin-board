@@ -1,0 +1,18 @@
+.container.mb-2
+  .d-flex.flex-wrap.align-items-center.py-2.border-bottom
+    .navbar.navbar-expand-md.navbar-light.me-auto
+      a.navbar-brand.me-md-4 href = root_path
+        = t('app_name')
+      .collapse.navbar-collapse[id="navbarToggler"]
+        ul.nav.nav-pills.flex-grow-1.navbar-nav.me-auto
+          li.nav-item.me-2
+            a.nav-link Главная
+          li.nav-item.me-2
+            a.nav-link Мои объявления
+          li.nav-item.me-2
+            a.nav-link Добавить
+    ul.nav.nav-pills
+      li.nav-item.me-2
+        a.nav-link Админка
+      li.nav-item.me-2
+        a.nav-link Выйти
