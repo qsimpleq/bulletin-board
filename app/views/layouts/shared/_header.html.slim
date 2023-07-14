@@ -15,4 +15,4 @@
       li.nav-item.me-2
         a.nav-link Админка
       li.nav-item.me-2
-        a.nav-link Выйти
+        = button_to 'Github', auth_request_path(:github), method: :post, class: 'link', data: { turbo: 'false' }
