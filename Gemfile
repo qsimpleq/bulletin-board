@@ -4,8 +4,10 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
-gem 'rails', '~> 7.0.6' # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem 'dotenv-rails'
+
 gem 'puma', '~> 5.0' # Use the Puma web server [https://github.com/puma/puma]
+gem 'rails', '~> 7.0.6' # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 
 gem 'cssbundling-rails' # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem 'jbuilder' # Build JSON APIs with ease [https://github.com/rails/jbuilder]
@@ -23,7 +25,7 @@ gem 'ancestry' # Ancestry allows rails ActiveRecord models to be organized as a 
 gem 'bootsnap', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'bootstrap'
 gem 'cocoon'
-gem "image_processing", "~> 1.2" # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+gem 'image_processing', '~> 1.2' # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'kaminari' # A pagination engine plugin for Rails 4+ and other modern frameworks
 gem 'omniauth'
 gem 'omniauth-github'
@@ -42,7 +44,6 @@ end
 group :development, :test do
   gem 'annotate' # Adds model attributes/routes to top of model files/routes file
   gem 'debug', platforms: %i[mri mingw x64_mingw] # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'dotenv-rails'
   gem 'faker'
   gem 'html2slim', github: 'slim-template/html2slim'
   gem 'i18n-tasks', require: false
