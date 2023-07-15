@@ -2,13 +2,13 @@
 
 module Web
   class ApplicationController < ApplicationController
-    helper_method %i[current_user helper_back_path]
+    helper_method %i[current_user back_path user_signed_in?]
 
     def current_user
-      User.find_by(id: session[:user_id])
+      @current_user ||= User.find_by(id: session[:user_id])
     end
 
-    def helper_back_path(**params)
+    def back_path(**params)
       params[:action_name] ||= action_name
       params[:controller_name] ||= controller_name
 
@@ -19,6 +19,10 @@ module Web
       else
         params[:default_path] || request.referer
       end
+    end
+
+    def user_signed_in?
+      current_user ? true : false
     end
   end
 end
