@@ -4,10 +4,11 @@
 Rails.application.routes.draw do
   post 'auth/:provider', to: 'web/auth#request', as: :auth_request
   get 'auth/:provider/callback', to: 'web/auth#callback', as: :callback_auth
+  delete 'auth/logout', to: 'web/auth#destroy'
 
   scope module: :web do
     # Defines the root path route ("/")
-    root 'categories#new'
+    root 'categories#index'
     resources :categories
   end
 end

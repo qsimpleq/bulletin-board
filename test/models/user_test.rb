@@ -8,7 +8,7 @@
 #  email      :string
 #  name       :string
 #  provider   :string
-#  uid        :integer
+#  uid        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

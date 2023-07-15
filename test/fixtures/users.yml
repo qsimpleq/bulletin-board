@@ -6,7 +6,7 @@
 #  email      :string
 #  name       :string
 #  provider   :string
-#  uid        :integer
+#  uid        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -22,13 +22,12 @@
 one:
   provider: github
   uid: 1
-  info:
-    name: one
-    email: one@example.com
+  name: one
+  email: one@example.com
 
 two:
   provider: github
   uid: 2
-  info:
-    name: two
-    email: two@example.com
+  name: two
+  email: two@example.com
+

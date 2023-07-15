@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_142308) do
     t.string "email"
     t.string "name"
     t.string "provider"
-    t.integer "uid"
+    t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email"

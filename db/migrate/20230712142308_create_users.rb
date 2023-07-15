@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :email, index: true
       t.string :name, index: true
       t.string :provider, index: true
-      t.integer :uid, index: true
+      t.string :uid, index: true
 
       t.timestamps
     end
