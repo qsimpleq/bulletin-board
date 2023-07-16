@@ -19,7 +19,7 @@
         a.nav-link
           = t('.admin')
       li.nav-item.me-2
-        - if current_user
+        - if user_signed_in?
           = button_to t('.logout'), auth_logout_path, method: :delete, class: 'nav-link', data: { turbo: 'false' }
         - else
           = button_to auth_request_path(:github), method: :post, class: 'nav-link', data: { turbo: 'false' } do
