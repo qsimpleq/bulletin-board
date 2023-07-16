@@ -6,3 +6,14 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require 'faker'
+
+Rails.logger.debug '###############'
+Rails.logger.debug 'Seeding started'
+
+# require_relative 'seeds/users'
+require_relative 'seeds/categories'
+
+Rails.logger.debug 'Seeding stopped'
+Rails.logger.debug '###############'
