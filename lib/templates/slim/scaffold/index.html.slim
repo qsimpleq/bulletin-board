@@ -1,8 +1,8 @@
 p style="color: green" = notice
 
-h1 <%= human_name.pluralize %>
+h1.h2.mb-4 = t('.title')
 
-= link_to "New <%= human_name.downcase %>", <%= new_helper(type: :path) %>
+= link_to t('.link_new'), <%= new_helper(type: :path) %>
 
 hr
 
