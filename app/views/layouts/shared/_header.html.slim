@@ -13,15 +13,15 @@
               = t('.my_advertisements')
           li.nav-item.me-2
             a.nav-link
-              = t('.add')
+              = t('action.add')
     ul.nav.nav-pills
       li.nav-item.me-2
         a.nav-link
           = t('.admin')
       li.nav-item.me-2
         - if user_signed_in?
-          = button_to t('.logout'), auth_logout_path, method: :delete, class: 'nav-link', data: { turbo: 'false' }
+          = button_to t('.log_out'), auth_logout_path, method: :delete, class: 'nav-link', data: { turbo: 'false' }
         - else
           = button_to auth_request_path(:github), method: :post, class: 'nav-link', data: { turbo: 'false' } do
             span.bi.bi-github.me-2
-            = t('.sign_in')
+            = t('.log_in')
