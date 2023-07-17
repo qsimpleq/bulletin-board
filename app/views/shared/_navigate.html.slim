@@ -9,7 +9,8 @@
     - else
       = link_to t('action.back'), back_path(default_path: root_path), class: 'btn btn-primary me-1'
       - if user_signed_in? && action_name == 'show'
-        = link_to t('action.edit'), public_send("edit_#{entity.class.to_s.downcase}_path", entity), class: 'btn btn-primary me-1'
+        = link_to t('action.edit'), public_send("edit_#{entity.class.to_s.downcase}_path", entity),
+                                    class: 'btn btn-primary me-1'
         = link_to t('action.delete'), entity, \
                                       class: 'btn btn-danger me-1', \
                                       data: { turbo_method: :delete, turbo_confirm: t('action.confirm') }

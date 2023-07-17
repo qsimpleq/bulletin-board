@@ -2,7 +2,7 @@
 
 module Web
   class CategoriesController < Web::ApplicationController
-    before_action :set_category, only: %i[show edit update destroy]
+    before_action :set_category, only: %i[edit update destroy]
 
     def index
       @categories = Category.where.not(name: nil)

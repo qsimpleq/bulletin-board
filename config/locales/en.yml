@@ -25,6 +25,12 @@ en:
       category:
         one: Category
         other: Categories
+    errors:
+      models:
+        user:
+          attributes:
+            provider:
+              inclusion: '%{value}s is not supported'
 
   layouts:
     shared:
@@ -36,6 +42,12 @@ en:
         log_out: Logout
 
   web:
+    auth:
+      callback:
+        log_in: Signed in!
+      destroy:
+        log_out: Log out!
+
     categories:
       destroy:
         error: Category could not be destroyed

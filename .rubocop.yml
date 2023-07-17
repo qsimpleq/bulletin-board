@@ -13,8 +13,7 @@ AllCops:
     - 'bin/{bundle,dev,rails,rake,setup}'
     - 'db/schema.rb'
     - 'lib/tasks/auto_annotate_models.rake'
-    - 'lib/templates/slim/scaffold/_form.html.slim'
-    - 'lib/templates/slim/scaffold/index.html.slim'
+    - 'lib/templates/slim/scaffold/**/*'
     - 'script/**/*'
 
 Metrics/BlockLength:

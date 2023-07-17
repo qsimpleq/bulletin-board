@@ -26,7 +26,7 @@ class User < ApplicationRecord
   validates :provider,
             presence: true,
             uniqueness: { scope: [:uid] },
-            inclusion: { in: %w[github], message: '%<value>s is not supported' }
+            inclusion: { in: %w[github] }
   validates :uid, presence: true
 
   def self.create_with_omniauth(auth)
