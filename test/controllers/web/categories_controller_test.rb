@@ -25,13 +25,7 @@ module Web
         post categories_url, params: { category: { name: @category.name } }
       end
 
-      assert_redirected_to category_url(Category.last)
-    end
-
-    test 'should show category' do
-      get category_url(@category)
-
-      assert_response :success
+      assert_redirected_to categories_url
     end
 
     test 'should get edit' do
@@ -43,7 +37,7 @@ module Web
     test 'should update category' do
       patch category_url(@category), params: { category: { name: @category.name } }
 
-      assert_redirected_to category_url(@category)
+      assert_redirected_to categories_url
     end
 
     test 'should destroy category' do
