@@ -5,21 +5,13 @@
         = t('app_name')
       .collapse.navbar-collapse[id="navbarToggler"]
         ul.nav.nav-pills.flex-grow-1.navbar-nav.me-auto
-          li.nav-item.me-2
-            a.nav-link
-              = t('.home')
+          li.nav-item.me-2 = link_to t('.home'), root_path, class: 'nav-link'
           - if user_signed_in?
-            li.nav-item.me-2
-              a.nav-link
-                = t('.my_advertisements')
-            li.nav-item.me-2
-              a.nav-link
-                = t('action.add')
+            li.nav-item.me-2 = link_to t('.my_advertisements'), root_path, class: 'nav-link'
+            li.nav-item.me-2 = link_to t('action.add'), new_bulletin_path, class: 'nav-link'
     ul.nav.nav-pills
       - if user_signed_in?
-        li.nav-item.me-2
-          a.nav-link
-            = t('.admin')
+        li.nav-item.me-2 = link_to t('.admin'), root_path, class: 'nav-link'
         li.nav-item.me-2
           = button_to t('.log_out'), auth_logout_path, method: :delete, class: 'nav-link', data: { turbo: 'false' }
       - else

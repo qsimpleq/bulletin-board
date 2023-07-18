@@ -66,3 +66,85 @@ en:
       update:
         error: Category could not be updated
         success: Category was successfully updated
+
+#  activerecord:
+#    attributes:
+#      comment:
+#        content: Content
+#      post:
+#        body: Body
+#        category: Category
+#        title: Title
+#      post_comment:
+#        body: Body
+#    models:
+#      category: Category
+#      comment: Comment
+#      like: Like
+#      post: Post
+#      post_comment: Comment
+#      post_like: Like
+#  categories:
+#    edit:
+#      back: Back
+#      title: Edit category
+#    index:
+#      new: New category
+#      title: Categories
+#    new:
+#      back: Back
+#      title: New category
+#    show:
+#      title: Show category
+#  comments:
+#    create:
+#      error: Comment could not be created.
+#      success: Comment was created.
+#    destroy:
+#      error: Comment could not be destroyed.
+#      success: Comment was destroyed.
+#  errors:
+#    messages:
+#      not_saved: Not saved
+#  layouts:
+#    shared:
+#      header:
+#        categories: Categories
+#        log_in: Log In
+#        log_out: Logout
+#        login_group: Login group
+#        new_post: New post
+#        sign_up: Sign up
+#        toggle_navigation: Toggle navigation
+#  likes:
+#    create:
+#      error: Like could not be created.
+#      success: Like was created.
+#    destroy:
+#      error: Like could not be destroyed.
+#      success: Like was destroyed.
+#  posts:
+#    create:
+#      error: Post could not be created.
+#      success: Post was successfully created.
+#    destroy:
+#      error: Post could not be destroyed.
+#      success: Post was successfully destroyed.
+#    edit:
+#      show: Show post
+#      show_post: Show post
+#      title: Edit Post
+#    index:
+#      title: Posts
+#    new:
+#      title: New Post
+#    post:
+#      link: Post link
+#    post_header:
+#      title: All posts
+#    show:
+#      body: Body
+#      comments: Comments
+#    update:
+#      error: Post could not be updated.
+#      success: Post was successfully updated.

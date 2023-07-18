@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   scope module: :web do
     # Defines the root path route ("/")
-    root 'categories#index'
+    root 'bulletins#index'
+    resources :bulletins
     resources :categories
   end
 end

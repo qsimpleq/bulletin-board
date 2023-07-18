@@ -13,7 +13,7 @@
 #
 
 one:
-  name: MyString
+  name: one
 
 two:
-  name: MyString
+  name: two

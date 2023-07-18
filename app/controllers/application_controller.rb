@@ -7,6 +7,18 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
+  def user_signed_in?
+    current_user ? true : false
+  end
+
+  def authenticate_user!
+    return if user_signed_in?
+
+    flash[:error] = t('authenticate_user')
+
+    redirect_to root_path
+  end
+
   def back_path(**params)
     params[:action_name] ||= action_name
     params[:controller_name] ||= controller_name
@@ -18,9 +30,5 @@ class ApplicationController < ActionController::Base
     else
       params[:default_path] || request.referer
     end
-  end
-
-  def user_signed_in?
-    current_user ? true : false
   end
 end

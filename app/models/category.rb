@@ -14,5 +14,7 @@
 #  index_categories_on_name  (name)
 #
 class Category < ApplicationRecord
+  has_many :bulletins, dependent: :nullify
+
   validates :name, presence: true, length: { minimum: 1 }
 end
