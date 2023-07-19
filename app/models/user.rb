@@ -5,7 +5,7 @@
 # Table name: users
 #
 #  id         :integer          not null, primary key
-#  admin      :boolean
+#  admin      :boolean          default(TRUE), not null
 #  email      :string
 #  name       :string
 #  provider   :string
@@ -33,6 +33,7 @@ class User < ApplicationRecord
 
   def self.create_with_omniauth(auth)
     create!(
+      admin: true,
       email: auth['info']['email'],
       name: auth['info']['name'],
       provider: auth['provider'],

@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_19_085402) do
     t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
+    t.boolean "admin", default: true, null: false
     t.index ["admin"], name: "index_users_on_admin"
     t.index ["email"], name: "index_users_on_email"
     t.index ["name"], name: "index_users_on_name"

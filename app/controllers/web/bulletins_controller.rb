@@ -2,12 +2,12 @@
 
 module Web
   class BulletinsController < Web::ApplicationController
-    before_action :authenticate_user!, only: %i[create destroy edit new update]
+    after_action :check_policy, only: %i[show new create edit update destroy]
     before_action :set_bulletin, only: %i[show edit update destroy]
     before_action :set_categories, only: %i[new create edit]
 
     def index
-      @bulletins = Bulletin.includes(:category).order(created_at: :desc)
+      @bulletins = policy_scope(Bulletin).includes(:category).order(created_at: :desc)
     end
 
     def show; end
@@ -49,12 +49,16 @@ module Web
 
     private
 
-    def set_bulletin
-      @bulletin = Bulletin.includes(:category).find(params[:id])
+    def check_policy
+      authorize @bulletin
     end
 
     def bulletin_params
       params.require(:bulletin).permit(%i[category_id description image title])
+    end
+
+    def set_bulletin
+      @bulletin = Bulletin.includes(:category).find(params[:id])
     end
 
     def set_categories

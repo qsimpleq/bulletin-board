@@ -5,7 +5,9 @@ require 'test_helper'
 module Web
   class CategoriesControllerTest < ActionDispatch::IntegrationTest
     setup do
+      @user_one = users(:one)
       @category = categories(:one)
+      sign_in(@user_one)
     end
 
     test 'should get index' do

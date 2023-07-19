@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method %i[current_user back_path user_signed_in?]
+  include Pundit::Authorization
+
+  helper_method %i[back_path current_user user_signed_in?]
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])

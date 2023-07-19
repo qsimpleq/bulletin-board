@@ -31,6 +31,7 @@ gem 'kaminari' # A pagination engine plugin for Rails 4+ and other modern framew
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
+gem 'pundit'
 gem 'ransack' # Object-based searching for Active Record
 gem 'sentry-rails'
 gem 'sentry-ruby'

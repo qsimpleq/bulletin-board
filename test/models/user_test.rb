@@ -5,7 +5,7 @@
 # Table name: users
 #
 #  id         :integer          not null, primary key
-#  admin      :boolean
+#  admin      :boolean          default(TRUE), not null
 #  email      :string
 #  name       :string
 #  provider   :string
