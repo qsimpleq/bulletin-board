@@ -5,6 +5,7 @@
 # Table name: users
 #
 #  id         :integer          not null, primary key
+#  admin      :boolean
 #  email      :string
 #  name       :string
 #  provider   :string
@@ -14,6 +15,7 @@
 #
 # Indexes
 #
+#  index_users_on_admin             (admin)
 #  index_users_on_email             (email)
 #  index_users_on_name              (name)
 #  index_users_on_provider          (provider)
