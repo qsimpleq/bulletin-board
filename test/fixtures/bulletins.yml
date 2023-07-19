@@ -19,12 +19,11 @@
 #
 
 one:
-  title: MyString
-  description: MyText
-  category: two
-
-two:
-  title: MyString
-  description: MyText
+  title: Fox
+  description: Real fox
   category: one
 
+two:
+  title: Bike
+  description: Real bike
+  category: two

@@ -1,0 +1,2 @@
+one_thumbnail_blob: <%= ActiveStorage::FixtureSet.blob filename: "animal_fox.jpg" %>
+two_thumbnail_blob: <%= ActiveStorage::FixtureSet.blob filename: "vehicle_bike.jpg" %>

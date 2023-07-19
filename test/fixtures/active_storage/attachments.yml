@@ -1,0 +1,9 @@
+one_thumbnail_attachment:
+  name: thumbnail
+  record: first (Bulletin)
+  blob: one_thumbnail_blob
+
+two_thumbnail_attachment:
+  name: thumbnail
+  record: last (Bulletin)
+  blob: two_thumbnail_blob
