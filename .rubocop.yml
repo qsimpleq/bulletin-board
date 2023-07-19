@@ -25,7 +25,7 @@ Layout/LineLength:
     - '\s*# .+'
 Metrics/AbcSize:
   Exclude:
-    - 'db/migrate/**/*'
+    - 'db/**/*'
 Metrics/MethodLength:
   Enabled: false
 Rails/UniqueValidationWithoutIndex:

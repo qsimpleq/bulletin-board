@@ -4,9 +4,6 @@ def create_categories
   return if Category.any?
 
   [
-    'one',
-    'two',
-    'three',
     'Для дома и',
     'дачи',
     'Животные',
