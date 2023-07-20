@@ -6,10 +6,15 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'web/auth#callback', as: :callback_auth
   delete 'auth/logout', to: 'web/auth#destroy'
 
+  scope 'admin', module: :web do
+    resources :bulletins, as: 'admin_bulletins', only: %i[index]
+    resources :categories, except: %i[show]
+    resources :users
+  end
+
   scope module: :web do
     # Defines the root path route ("/")
-    root 'bulletins#index'
-    resources :bulletins
-    resources :categories
+    root 'bulletins#index', to: 'bulletins#index'
+    resources :bulletins, only: %i[index show new create]
   end
 end
