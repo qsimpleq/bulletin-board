@@ -23,6 +23,8 @@
 #  index_users_on_uid               (uid)
 #
 class User < ApplicationRecord
+  has_many :bulletins, dependent: :nullify
+
   validates :email, presence: true
   validates :name, presence: false
   validates :provider,
