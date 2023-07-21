@@ -1,0 +1,44 @@
+table[class="table table-borderless"]
+  thead
+    th = t('.columns.name')
+    th = t('.columns.state')
+    th = t('.columns.created_at')
+    - if table_column_visible?(:actions)
+      th = t('.columns.actions')
+
+  tbody
+    - @bulletins.each do |bulletin|
+      tr
+        td = bulletin.title
+        td = bulletin.state
+        td = time_ago_in_words(bulletin.created_at.to_time)
+        - if table_column_visible?(:actions)
+          td
+            = link_to t('action.show'), bulletin_path(bulletin), class: 'me-2'
+            = link_to t('action.edit'), edit_bulletin_path(bulletin), class: 'me-2'
+
+            - if user_signed_in?
+              - unless bulletin.archived?
+                - if current_page?(profile_path) && bulletin.may_moderate?
+                  = link_to t('.moderate'),
+                          moderate_bulletin_path(bulletin),
+                          class: 'me-2',
+                          data: { turbo_method: :patch, turbo_confirm: t('action.confirm') }
+
+                - if current_page?(admin_path) && current_user.admin?
+                  - if bulletin.may_publish?
+                    = link_to t('.publish'),
+                            publish_bulletin_path(bulletin),
+                            class: 'me-2',
+                            data: { turbo_method: :patch, turbo_confirm: t('action.confirm') }
+
+                  - if bulletin.may_decline?
+                    = link_to t('.decline'),
+                            decline_bulletin_path(bulletin),
+                            class: 'me-2',
+                            data: { turbo_method: :patch, turbo_confirm: t('action.confirm') }
+
+                = link_to t('.archive'),
+                        archive_bulletin_path(bulletin),
+                        class: 'text-danger me-2',
+                        data: { turbo_method: :patch, turbo_confirm: t('action.confirm') }
