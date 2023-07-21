@@ -30,4 +30,21 @@ class BulletinPolicy < ApplicationPolicy
   def destroy?
     edit?
   end
+
+  def moderate?
+    edit?
+  end
+
+  def publish?
+    user&.admin?
+  end
+
+  def decline?
+    quser&.admin?
+  end
+
+  def archive?
+    edit?
+  end
 end
+
