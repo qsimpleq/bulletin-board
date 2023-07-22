@@ -27,7 +27,7 @@ module Web
       @bulletin = Bulletin.new({ creator_id: current_user.id }.merge(bulletin_params))
 
       if @bulletin.save
-        redirect_to bulletins_path, notice: t('.success')
+        redirect_to profile_path, notice: t('.success')
       else
         flash[:error] = t('.error')
         render :new, status: :unprocessable_entity
@@ -36,7 +36,7 @@ module Web
 
     def update
       if @bulletin.update(bulletin_params)
-        redirect_to @bulletin, notice: t('.success')
+        redirect_to profile_path, notice: t('.success')
       else
         flash[:error] = t('.error')
         render :edit, status: :unprocessable_entity
