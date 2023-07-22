@@ -7,7 +7,7 @@
   = f.input :description
   = f.input :category_id, required: true, collection: @categories
   - if @bulletin.image_attachment
-    = image_tag @bulletin.image.variant(resize_to_limit: [100, 100]), class: 'img-thumbnail mb-2'
+    = image_tag @bulletin.image.variant(resize_to_limit: [150, 150]) , class: 'img-thumbnail mb-2'
   - else
     = f.input :image, required: true
 
