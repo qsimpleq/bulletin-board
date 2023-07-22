@@ -10,13 +10,14 @@
 
 require 'faker'
 
-Rails.logger.debug '###############'
-Rails.logger.debug 'Seeding started'
+# rubocop:disable Rails/Output
+puts '###############',
+     'Seeding started'
 
-# require_relative 'seeds/users'
-require_relative 'seeds/categories'
 require_relative 'seeds/users'
+require_relative 'seeds/categories'
 require_relative 'seeds/bulletins'
 
-Rails.logger.debug 'Seeding stopped'
-Rails.logger.debug '###############'
+puts 'Seeding stopped',
+     '###############'
+# rubocop:enable Rails/Output

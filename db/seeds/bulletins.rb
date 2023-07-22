@@ -11,24 +11,28 @@ def create_bulletins
   user = User.where(email: 'one@example.com').first
   titles = %w[animal_fox animal_owl animal_polarfox]
   category = Category.where(name: 'Животные').first
+  states = %w[draft under_moderation published rejected archived]
 
-  build_bulletins = lambda do
-    titles.each do |name|
-      Bulletin.create!(
-        category_id: category.id,
-        creator_id: user.id,
-        description: "#{category.name}: #{name}",
-        image: load_image("#{name}.jpg"),
-        title: name
-      )
+  states.each do |state|
+    build_bulletins = lambda do
+      titles.each do |name|
+        Bulletin.create!(
+          category_id: category.id,
+          creator_id: user.id,
+          description: "#{category.name}: #{name}, with original state: #{state}",
+          image: load_image("#{name}.jpg"),
+          title: name,
+          state:
+        )
+      end
     end
+
+    build_bulletins.call
+
+    titles = %w[vehicle_bike vehicle_car vehicle_wagon]
+    category = Category.where(name: 'Транспорт').first
+    build_bulletins.call
   end
-
-  build_bulletins.call
-
-  titles = %w[vehicle_bike vehicle_car vehicle_wagon]
-  category = Category.where(name: 'Транспорт').first
-  build_bulletins.call
 end
 
 create_bulletins
