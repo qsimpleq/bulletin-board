@@ -21,6 +21,7 @@ gem 'turbo-rails' # Hotwire's SPA-like page accelerator [https://turbo.hotwired.
 # gem "redis", "~> 4.0" # Use Redis adapter to run Action Cable in production
 # gem "sassc-rails" # Use Sass to process CSS
 gem 'aasm'
+gem 'active_storage_validations'
 gem 'ancestry' # Ancestry allows rails ActiveRecord models to be organized as a tree structure (or hierarchy).
 gem 'bootsnap', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'bootstrap'
