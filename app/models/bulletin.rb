@@ -59,4 +59,8 @@ class Bulletin < ApplicationRecord
       transitions to: %i[archived]
     end
   end
+
+  scope :created_by, ->(user) { where(creator_id: user.id) }
+  scope :published, -> { where(state: 'published') }
+  scope :under_moderation, -> { where(state: 'under_moderation') }
 end

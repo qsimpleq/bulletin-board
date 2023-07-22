@@ -8,12 +8,11 @@ module Web
     before_action :set_categories, only: %i[new create edit]
 
     def index
-      @bulletins = policy_scope(Bulletin).order(created_at: :desc)
+      @bulletins = policy_scope(Bulletin).send(*index_filter).order(created_at: :desc)
       @bulletin_columns = %i[name state created_at]
       @bulletin_columns << :actions if user_signed_in? && current_user.admin?
-      if [admin_path, admin_bulletins_path].include?(request.path)
-        render 'web/admin/index'
-      end
+
+      render 'web/admin/index' if [admin_path, admin_bulletins_path].include?(request.path)
     end
 
     def show; end
@@ -69,6 +68,18 @@ module Web
 
     def bulletin_params
       params.require(:bulletin).permit(%i[category_id description image title])
+    end
+
+    def index_filter
+      if request.path == profile_path
+        [:created_by, current_user]
+      elsif request.path == admin_path
+        [:under_moderation]
+      elsif request.path == admin_bulletins_path
+        [:all]
+      else
+        [:published]
+      end
     end
 
     def set_bulletin

@@ -3,7 +3,7 @@
 class BulletinPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.includes(:creator)
     end
   end
 
@@ -47,4 +47,3 @@ class BulletinPolicy < ApplicationPolicy
     edit?
   end
 end
-
