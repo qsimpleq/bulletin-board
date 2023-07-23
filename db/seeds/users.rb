@@ -3,12 +3,26 @@
 def create_users
   return if User.any?
 
-  User.create!(
-    admin: true,
-    email: 'one@example.com',
-    provider: :github,
-    uid: 12_345
-  )
+  %w[
+    one
+    two
+    three
+    four
+    five
+    six
+    seven
+    eight
+    nine
+    ten
+  ].each_with_index do |name, index|
+    User.create!(
+      admin: true,
+      name: "User #{name}",
+      email: "#{name}@example.com",
+      provider: :github,
+      uid: index
+    )
+  end
 end
 
 create_users
