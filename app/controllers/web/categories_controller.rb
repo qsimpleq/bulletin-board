@@ -6,7 +6,7 @@ module Web
     before_action :set_category, only: %i[edit update destroy]
 
     def index
-      @categories = policy_scope(Category).where.not(name: nil)
+      @categories = policy_scope(Category).page(params[:page]).where.not(name: nil)
       @category_columns = %i[id name]
       @category_columns << :actions if user_signed_in? && current_user.admin?
 

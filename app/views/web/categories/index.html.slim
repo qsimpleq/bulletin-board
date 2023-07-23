@@ -24,3 +24,5 @@ h1.h2.mb-4 = t('.title')
                       category_path(category),
                       class: 'text-danger me-2',
                       data: { turbo_method: :delete, turbo_confirm: t('action.confirm') }
+
+  = paginate @categories

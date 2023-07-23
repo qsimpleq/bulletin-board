@@ -6,16 +6,15 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'web/auth#callback', as: :callback_auth
   delete 'auth/logout', to: 'web/auth#destroy'
 
-  get 'admin', to: 'web/bulletins#index'
-  scope 'admin', module: :web do
-    resources :bulletins, as: 'admin_bulletins', only: %i[index]
-    resources :categories, except: %i[show]
-    resources :users
-  end
-
   scope module: :web do
-    # Defines the root path route ("/")
-    root 'bulletins#index', to: 'bulletins#index'
+    root 'bulletins#index'
+
+    resource :admin, to: 'bulletins#index', only: :show, as: :admin
+    scope 'admin' do
+      get 'bulletins', to: 'bulletins#index', as: :admin_bulletins, only: %i[show]
+      resources :categories, except: %i[show]
+    end
+
     resources :bulletins, only: %i[index show new create edit update] do
       member do
         patch :moderate
@@ -24,6 +23,7 @@ Rails.application.routes.draw do
         patch :archive
       end
     end
+
     resource :profile, to: 'bulletins#index', only: :show
   end
 end
