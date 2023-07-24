@@ -75,6 +75,9 @@ en:
         title_moderation: Bulletins to moderation
         title_my: My Bulletins
       index_table:
+        confirm_archive: Are you sure want to archive bulletin?
+        confirm_decline: Are you sure want to decline bulletin?
+        confirm_publish: Are you sure want to publish bulletin?
         columns:
           actions: Actions
           created_at: Created

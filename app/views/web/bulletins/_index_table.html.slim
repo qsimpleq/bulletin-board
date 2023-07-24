@@ -26,21 +26,21 @@ table[class="table table-borderless"]
                 = link_to t('action.moderate'),
                         moderate_bulletin_path(bulletin),
                         class: 'me-2',
-                        data: { turbo_method: :patch, turbo_confirm: t('action.confirm') }
+                        data: { turbo_method: :patch }
 
               - if @bulletin_actions.include?(:publish) && bulletin.may_publish?
                 = link_to t('action.publish'),
                         publish_bulletin_path(bulletin),
                         class: 'me-2',
-                        data: { turbo_method: :patch, turbo_confirm: t('action.confirm') }
+                        data: { turbo_method: :patch, turbo_confirm: t('.confirm_publish') }
 
               - if @bulletin_actions.include?(:decline) && bulletin.may_decline?
                 = link_to t('action.decline'),
                         decline_bulletin_path(bulletin),
                         class: 'me-2',
-                        data: { turbo_method: :patch, turbo_confirm: t('action.confirm') }
+                        data: { turbo_method: :patch, turbo_confirm: t('.confirm_decline') }
 
               = link_to t('action.archive'),
                       archive_bulletin_path(bulletin),
                       class: 'text-danger me-2',
-                      data: { turbo_method: :patch, turbo_confirm: t('action.confirm') }
+                      data: { turbo_method: :patch, turbo_confirm: t('.confirm_archive') }
