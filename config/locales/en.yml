@@ -1,54 +1,97 @@
 ---
 en:
-  app_name: Bulletin board
-
   action:
     add: Add
+    archive: Archive
+    authenticate_user:
     back: Back
     comment: Comment
     confirm: Are you sure?
     confirm_delete: Are you sure want to delete?
     create: Create
+    decline: Decline
     delete: Delete
     edit: Edit
     index: Index
+    moderate: Moderate
     new: New
+    publish: Publish
+    reset: Reset
     save: Save
     show: Show
+    submit: Submit
     update: Update
-
   activerecord:
     attributes:
       category:
         name: Name
-    models:
-      category:
-        one: Category
-        other: Categories
     errors:
       models:
         user:
           attributes:
             provider:
-              inclusion: '%{value}s is not supported'
-
+              inclusion: "%{value}s is not supported"
+    models:
+      category:
+        one: Category
+        other: Categories
+  app_name: Bulletin board
+  error:
+    authenticate_user: Can't authenticate user
   layouts:
     shared:
       header:
         admin: Admin
         home: Home
-        my_advertisements: My advertisements
         log_in: Log In
         log_out: Logout
-
+        my_bulletins: My bulletins
   web:
+    admin:
+      index:
+        link_all: All bulletins
+        link_categories: All categories
+        link_moderation: Bulletins to moderation
     auth:
       callback:
         log_in: Signed in!
       destroy:
         log_out: Log out!
-
+    bulletins:
+      create:
+        error: Bulletin could not be created
+        success: Bulletin was created
+      destroy:
+        error: Bulletin could not be destroyed
+        success: Bulletin was successfully destroyed
+      edit:
+        title: Edit bulletin
+      index:
+        add: Add bulletin
+        search_category: Select category
+        search_state: by state
+        search_title: Search by bulletin title
+        title: Bulletins
+        title_moderation: Bulletins to moderation
+        title_my: My Bulletins
+      index_table:
+        columns:
+          actions: Actions
+          created_at: Created
+          name: Name
+          state: State
+      new:
+        title: New bulletin
+      set_state:
+        error: Bulletin state could not be updated
+        success: Bulletin state was successfully updated
+      update:
+        error: Bulletin could not be updated
+        success: Bulletin was successfully updated
     categories:
+      create:
+        error: Category could not be created
+        success: Category was successfully created
       destroy:
         error: Category could not be destroyed
         success: Category was successfully destroyed
@@ -56,9 +99,9 @@ en:
         title: Edit category
       index:
         columns:
+          actions: Actions
           id: ID
           name: Name
-          actions: Actions
         link_new: Add category
         title: Categories
       new:
@@ -66,85 +109,3 @@ en:
       update:
         error: Category could not be updated
         success: Category was successfully updated
-
-#  activerecord:
-#    attributes:
-#      comment:
-#        content: Content
-#      post:
-#        body: Body
-#        category: Category
-#        title: Title
-#      post_comment:
-#        body: Body
-#    models:
-#      category: Category
-#      comment: Comment
-#      like: Like
-#      post: Post
-#      post_comment: Comment
-#      post_like: Like
-#  categories:
-#    edit:
-#      back: Back
-#      title: Edit category
-#    index:
-#      new: New category
-#      title: Categories
-#    new:
-#      back: Back
-#      title: New category
-#    show:
-#      title: Show category
-#  comments:
-#    create:
-#      error: Comment could not be created.
-#      success: Comment was created.
-#    destroy:
-#      error: Comment could not be destroyed.
-#      success: Comment was destroyed.
-#  errors:
-#    messages:
-#      not_saved: Not saved
-#  layouts:
-#    shared:
-#      header:
-#        categories: Categories
-#        log_in: Log In
-#        log_out: Logout
-#        login_group: Login group
-#        new_post: New post
-#        sign_up: Sign up
-#        toggle_navigation: Toggle navigation
-#  likes:
-#    create:
-#      error: Like could not be created.
-#      success: Like was created.
-#    destroy:
-#      error: Like could not be destroyed.
-#      success: Like was destroyed.
-#  posts:
-#    create:
-#      error: Post could not be created.
-#      success: Post was successfully created.
-#    destroy:
-#      error: Post could not be destroyed.
-#      success: Post was successfully destroyed.
-#    edit:
-#      show: Show post
-#      show_post: Show post
-#      title: Edit Post
-#    index:
-#      title: Posts
-#    new:
-#      title: New Post
-#    post:
-#      link: Post link
-#    post_header:
-#      title: All posts
-#    show:
-#      body: Body
-#      comments: Comments
-#    update:
-#      error: Post could not be updated.
-#      success: Post was successfully updated.

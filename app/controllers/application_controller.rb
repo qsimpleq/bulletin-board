@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     return if user_signed_in?
 
-    flash[:error] = t('authenticate_user')
+    flash[:error] = t('error.authenticate_user')
 
     redirect_to root_path
   end
