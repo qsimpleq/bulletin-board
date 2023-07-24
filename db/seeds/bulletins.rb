@@ -11,7 +11,7 @@ def create_bulletins
   users = User.all
   titles = %w[animal_fox animal_owl animal_polarfox vehicle_bike vehicle_car vehicle_wagon]
   categories = Category.all
-  states = Bulletin.aasm.states.map(&:name)
+  states = Bulletin.states
 
   ActiveRecord::Base.transaction do
     1.upto(2000) do |num|

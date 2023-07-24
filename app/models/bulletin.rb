@@ -63,4 +63,12 @@ class Bulletin < ApplicationRecord
   scope :created_by, ->(user) { where(creator_id: user.id) }
   scope :published, -> { where(state: 'published') }
   scope :under_moderation, -> { where(state: 'under_moderation') }
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[category_id state title]
+  end
+
+  def self.states
+    @states ||= aasm.states.map(&:name)
+  end
 end

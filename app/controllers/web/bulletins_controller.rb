@@ -8,12 +8,9 @@ module Web
     before_action :set_categories, only: %i[new create edit]
 
     def index
-      @bulletins = policy_scope(Bulletin)
-                   .page(params[:page])
-                   .send(*index_filter)
-                   .order(created_at: :desc)
+      index_prepare_variables
       index_build_columns
-
+      index_build_actions
       render 'web/admin/index' if [admin_path, admin_bulletins_path].include?(request.path)
     end
 
@@ -73,20 +70,41 @@ module Web
     end
 
     def index_build_columns
-      @bulletin_columns = %i[name state created_at]
+      @bulletin_columns = %i[name]
+      @bulletin_columns << :state if request.path == profile_path || request.path == admin_bulletins_path
+      @bulletin_columns << :created_at
       @bulletin_columns << :actions if user_signed_in? && current_user.admin?
     end
 
+    # rubocop:disable Metrics/AbcSize
+    def index_build_actions
+      @bulletin_actions = %i[]
+      return @bulletin_actions unless @bulletin_columns.include?(:actions)
+
+      @bulletin_actions << :show if [profile_path, admin_bulletins_path].include?(request.path)
+      @bulletin_actions.push(:edit, :moderate) if request.path == profile_path
+      @bulletin_actions.push(:publish, :decline) if request.path == admin_path && current_user.admin?
+      @bulletin_actions << :archive
+    end
+    # rubocop:enable Metrics/AbcSize
+
+    def index_prepare_variables
+      @q = policy_scope(Bulletin).ransack(params[:q])
+      @bulletins = @q.result.page(params[:page]).send(*index_filter).order(created_at: :desc)
+    end
+
     def index_filter
+      result = []
       if request.path == profile_path
-        [:created_by, current_user]
+        result.push(:created_by, current_user)
       elsif request.path == admin_path
-        [:under_moderation]
+        result << :under_moderation
       elsif request.path == admin_bulletins_path
-        [:all]
+        result << :all
       else
-        [:published]
+        result << :published
       end
+      result
     end
 
     def set_bulletin

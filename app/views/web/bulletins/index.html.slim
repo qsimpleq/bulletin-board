@@ -1,14 +1,41 @@
 .row
   .p-3.p-lg-5.pt-lg-0
     .mb-4
-      h2 = t('.title')
+      h2
+        - if current_page?(profile_path)
+          = t('.title_my')
+        - elsif current_page?(admin_path)
+          = t('.title_moderation')
+        - else
+          = t('.title')
       hr
     - if current_page?(profile_path)
       = link_to t('.add'), new_bulletin_path
 
     - unless current_page?(admin_path)
       .p-3.bg-light
-        | Поиск
+        = search_form_for @q, url: request.path, method: :get do |f|
+          .row.my-2
+            .col-6
+              = f.input :title_cont, label: false
+              small.form-text.text-muted = t('.search_title')
+            .col-4
+              - if current_page?(admin_bulletins_path)
+                = f.input :state_eq,
+                        as: :select,
+                        collection: ['', *Bulletin.states],
+                        selected: params[:q] ? params[:q][:state_eq] : nil,
+                        label: false
+                small.form-text.text-muted = t('.search_state')
+              - else
+                = f.input :category_id_eq,
+                        as: :select,
+                        collection: Category.pluck(:name, :id),
+                        label: false
+                small.form-text.text-muted = t('.search_category')
+            .col-2
+              = f.submit t('action.submit'), class: 'btn btn-primary me-2'
+              = link_to t('action.reset'), request.path, class: 'btn btn-outline-primary'
 
     .row.mt-2
       - if current_page?(bulletins_path) || current_page?(root_path)
