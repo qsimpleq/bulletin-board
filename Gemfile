@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
-gem 'dotenv-rails'
+gem 'dotenv-rails', groups: %i[development test]
 
 gem 'puma', '~> 5.0' # Use the Puma web server [https://github.com/puma/puma]
 gem 'rails', '~> 7.0.6' # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

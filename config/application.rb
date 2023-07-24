@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require 'dotenv/load'
 require_relative 'boot'
+
+require 'dotenv/load' if %w[development test].include? ENV['RAILS_ENV']
 
 ENV['RANSACK_FORM_BUILDER'] = '::SimpleForm::FormBuilder'
 
