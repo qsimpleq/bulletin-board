@@ -21,7 +21,7 @@ def create_bulletins
       state = states.sample
       Bulletin.create(
         category_id: category.id,
-        creator_id: user.id,
+        user_id: user.id,
         description: "#{category.name}: #{title}, with original state: #{state}",
         image: load_image("#{title}.jpg"),
         title: "#{num}: #{title} from: #{user.name}",

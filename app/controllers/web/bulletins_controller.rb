@@ -22,7 +22,7 @@ module Web
     def edit; end
 
     def create
-      @bulletin = Bulletin.new({ creator_id: current_user.id }.merge(bulletin_params))
+      @bulletin = Bulletin.new({ user_id: current_user.id }.merge(bulletin_params))
 
       if @bulletin.save
         redirect_to profile_path, notice: t('.success')

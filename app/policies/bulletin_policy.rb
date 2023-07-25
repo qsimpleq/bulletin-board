@@ -7,7 +7,7 @@ class BulletinPolicy < ApplicationPolicy
     attr_accessor :options
 
     def resolve
-      base_scope = scope.includes(:creator, :category)
+      base_scope = scope.includes(:user, :category)
       opt = self&.options
 
       return base_scope.published if opt.nil? || (opt.any? && ['/', opt[:bulletins_path]].include?(opt[:current_path]))
@@ -41,7 +41,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def edit?
-    user&.id == record.creator_id || user&.admin?
+    user&.id == record.user_id || user&.admin?
   end
 
   def update?
