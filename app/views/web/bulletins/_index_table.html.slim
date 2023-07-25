@@ -1,20 +1,20 @@
 table[class="table table-borderless"]
   thead
     th = t('.columns.name')
-    - if table_column_visible?(:state)
+    - if table_column_visible?(:state, 'bulletins')
       th = t('.columns.state')
     th = t('.columns.created_at')
-    - if table_column_visible?(:actions)
+    - if table_column_visible?(:actions, 'bulletins')
       th = t('.columns.actions')
 
   tbody
     - @bulletins.each do |bulletin|
       tr
         td = bulletin.title
-        - if table_column_visible?(:state)
+        - if table_column_visible?(:state, 'bulletins')
           td = bulletin.state
         td = time_ago_in_words(bulletin.created_at.to_time)
-        - if table_column_visible?(:actions)
+        - if table_column_visible?(:actions, 'bulletins')
           td
             - if @bulletin_actions.include?(:show)
               = link_to t('action.show'), bulletin_path(bulletin), class: 'me-2'

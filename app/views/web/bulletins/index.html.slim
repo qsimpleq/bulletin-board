@@ -39,8 +39,8 @@
 
     .row.mt-2
       - if current_page?(bulletins_path) || current_page?(root_path)
-        = render 'index_grid'
+        = render 'web/bulletins/index_grid'
       - else
-        = render 'index_table'
+        = render 'web/bulletins/index_table'
 
       = paginate @bulletins

@@ -1,4 +1,39 @@
 ---
+bulletins: &bulletins
+  create:
+    error: Bulletin could not be created
+    success: Bulletin was created
+  destroy:
+    error: Bulletin could not be destroyed
+    success: Bulletin was successfully destroyed
+  edit:
+    title: Edit bulletin
+  index:
+    add: Add bulletin
+    search_category: Select category
+    search_state: by state
+    search_title: Search by bulletin title
+    title: Bulletins
+    title_moderation: Bulletins to moderation
+    title_my: My Bulletins
+  index_table:
+    confirm_archive: Are you sure want to archive bulletin?
+    confirm_decline: Are you sure want to decline bulletin?
+    confirm_publish: Are you sure want to publish bulletin?
+    columns:
+      actions: Actions
+      created_at: Created
+      name: Name
+      state: State
+  new:
+    title: New bulletin
+  set_state:
+    error: Bulletin state could not be updated
+    success: Bulletin state was successfully updated
+  update:
+    error: Bulletin could not be updated
+    success: Bulletin was successfully updated
+
 en:
   action:
     add: Add
@@ -46,69 +81,42 @@ en:
         log_in: Log In
         log_out: Logout
         my_bulletins: My bulletins
+  pundit:
+    default: You need to be authorized user
+    default_admin: You need to be admin
   web:
     admin:
       index:
         link_all: All bulletins
         link_categories: All categories
         link_moderation: Bulletins to moderation
+      categories:
+        create:
+          error: Category could not be created
+          success: Category was successfully created
+        destroy:
+          error: Category could not be destroyed
+          success: Category was successfully destroyed
+        edit:
+          title: Edit category
+        index:
+          columns:
+            actions: Actions
+            id: ID
+            name: Name
+          link_new: Add category
+          title: Categories
+        new:
+          title: New category
+        update:
+          error: Category could not be updated
+          success: Category was successfully updated
+      bulletins:
+        *bulletins
     auth:
       callback:
         log_in: Signed in!
       destroy:
         log_out: Log out!
     bulletins:
-      create:
-        error: Bulletin could not be created
-        success: Bulletin was created
-      destroy:
-        error: Bulletin could not be destroyed
-        success: Bulletin was successfully destroyed
-      edit:
-        title: Edit bulletin
-      index:
-        add: Add bulletin
-        search_category: Select category
-        search_state: by state
-        search_title: Search by bulletin title
-        title: Bulletins
-        title_moderation: Bulletins to moderation
-        title_my: My Bulletins
-      index_table:
-        confirm_archive: Are you sure want to archive bulletin?
-        confirm_decline: Are you sure want to decline bulletin?
-        confirm_publish: Are you sure want to publish bulletin?
-        columns:
-          actions: Actions
-          created_at: Created
-          name: Name
-          state: State
-      new:
-        title: New bulletin
-      set_state:
-        error: Bulletin state could not be updated
-        success: Bulletin state was successfully updated
-      update:
-        error: Bulletin could not be updated
-        success: Bulletin was successfully updated
-    categories:
-      create:
-        error: Category could not be created
-        success: Category was successfully created
-      destroy:
-        error: Category could not be destroyed
-        success: Category was successfully destroyed
-      edit:
-        title: Edit category
-      index:
-        columns:
-          actions: Actions
-          id: ID
-          name: Name
-        link_new: Add category
-        title: Categories
-      new:
-        title: New category
-      update:
-        error: Category could not be updated
-        success: Category was successfully updated
+      *bulletins

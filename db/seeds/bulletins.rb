@@ -24,7 +24,7 @@ def create_bulletins
         creator_id: user.id,
         description: "#{category.name}: #{title}, with original state: #{state}",
         image: load_image("#{title}.jpg"),
-        title: "#{num}: #{title} from user #{user.name}",
+        title: "#{num}: #{title} from: #{user.name}",
         state: state.to_s
       )
     end

@@ -9,13 +9,13 @@ Rails.application.routes.draw do
   scope module: :web do
     root 'bulletins#index'
 
-    resource :admin, to: 'bulletins#index', only: :show, as: :admin
-    scope 'admin' do
-      get 'bulletins', to: 'bulletins#index', as: :admin_bulletins, only: %i[show]
+    get 'admin', to: 'admin/bulletins#index'
+    scope '/admin', module: :admin do
+      resources :bulletins, only: :index, as: :admin_bulletins
       resources :categories, except: %i[show]
     end
 
-    resources :bulletins, only: %i[index show new create edit update] do
+    resources :bulletins, except: %i[destroy] do
       member do
         patch :moderate
         patch :publish
@@ -24,6 +24,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resource :profile, to: 'bulletins#index', only: :show
+    get :profile, to: 'profile#index'
   end
 end

@@ -2,8 +2,15 @@
 
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
-
   helper_method %i[back_path current_user user_signed_in?]
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  private
+
+  def user_not_authorized
+    flash[:alert] = user_signed_in? ? t('pundit.default_admin') : t('pundit.default')
+    redirect_back(fallback_location: root_path)
+  end
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])

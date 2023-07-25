@@ -16,9 +16,6 @@ AllCops:
     - 'lib/templates/slim/scaffold/**/*'
     - 'script/**/*'
 
-Metrics/BlockLength:
-  Exclude:
-    - 'config/initializers/simple_form_bootstrap.rb'
 Layout/LineLength:
   Max: 120
   AllowedPatterns:
@@ -26,6 +23,9 @@ Layout/LineLength:
 Metrics/AbcSize:
   Exclude:
     - 'db/**/*'
+Metrics/BlockLength:
+  Exclude:
+    - 'config/initializers/simple_form_bootstrap.rb'
 Metrics/MethodLength:
   Enabled: false
 Rails/UniqueValidationWithoutIndex:
