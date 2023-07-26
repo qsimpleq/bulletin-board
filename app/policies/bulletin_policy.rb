@@ -60,7 +60,7 @@ class BulletinPolicy < ApplicationPolicy
     user&.admin?
   end
 
-  def decline?
+  def reject?
     quser&.admin?
   end
 

@@ -24,7 +24,7 @@ module Web
         @category = Category.new(category_params)
 
         if @category.save
-          redirect_to categories_path, notice: t('.success')
+          redirect_to admin_categories_path, notice: t('.success')
         else
           render :new, status: :unprocessable_entity
         end
@@ -32,7 +32,7 @@ module Web
 
       def update
         if @category.update(category_params)
-          redirect_to categories_path, notice: t('.success')
+          redirect_to admin_categories_path, notice: t('.success')
         else
           render :edit, status: :unprocessable_entity
         end
@@ -40,7 +40,7 @@ module Web
 
       def destroy
         if @category.destroy
-          redirect_to categories_path, notice: t('.success')
+          redirect_to admin_categories_path, notice: t('.success')
         else
           render @category, status: :unprocessable_entity
         end

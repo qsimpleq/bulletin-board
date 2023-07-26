@@ -1,5 +1,8 @@
 ---
 bulletins: &bulletins
+  archive:
+    error: Bulletin could not be archived
+    success: Bulletin was archived
   create:
     error: Bulletin could not be created
     success: Bulletin was created
@@ -20,13 +23,23 @@ bulletins: &bulletins
     confirm_archive: Are you sure want to archive bulletin?
     confirm_decline: Are you sure want to decline bulletin?
     confirm_publish: Are you sure want to publish bulletin?
+    confirm_reject: Are you sure want to reject bulletin?
     columns:
       actions: Actions
       created_at: Created
       name: Name
       state: State
+  moderate:
+    error: Bulletin could not be sent to moderation
+    success: Bulletin was sent to moderation
   new:
     title: New bulletin
+  publish:
+    error: Bulletin could not be published
+    success: Bulletin was published
+  reject:
+    error: Bulletin could not be rejected
+    success: Bulletin was rejected
   set_state:
     error: Bulletin state could not be updated
     success: Bulletin state was successfully updated
@@ -51,6 +64,7 @@ en:
     moderate: Moderate
     new: New
     publish: Publish
+    reject: Reject
     reset: Reset
     save: Save
     show: Show

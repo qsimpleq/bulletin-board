@@ -2,11 +2,11 @@
 
 module Web
   class BulletinsController < Web::ApplicationController
-    include BulletinsIndex
+    include BulletinsCommon
 
-    after_action :check_policy, only: %i[show new create edit update destroy archive decline moderate publish]
+    after_action :check_policy, only: %i[show new create edit update destroy archive moderate]
     before_action :set_bulletin, only: %i[show edit update destroy]
-    before_action :set_state, only: %i[archive decline moderate publish]
+    before_action :set_state, only: %i[archive moderate]
     before_action :set_categories, only: %i[new edit]
 
     def index
@@ -52,52 +52,12 @@ module Web
 
     def archive; end
 
-    def decline; end
-
     def moderate; end
-
-    def publish; end
 
     private
 
-    def check_policy
-      authorize @bulletin
-    end
-
-    def bulletin_params
-      params.require(:bulletin).permit(%i[category_id description image title])
-    end
-
-    def index_filter
-      result = []
-      if request.path == profile_path
-        result.push(:created_by, current_user)
-      elsif request.path == admin_path
-        result << :under_moderation
-      elsif request.path == admin_bulletins_path
-        result << :all
-      else
-        result << :published
-      end
-      result
-    end
-
-    def set_bulletin
-      @bulletin = Bulletin.includes(:category).find(params[:id])
-    end
-
     def set_categories
       @categories = Category.where.not(name: nil)
-    end
-
-    def set_state
-      set_bulletin
-      if @bulletin&.method("may_#{action_name}?") && @bulletin.aasm.fire!(:"#{action_name}")
-        redirect_to profile_path, notice: t('.success')
-      else
-        flash[:error] = t('.error')
-        render profile_path
-      end
     end
   end
 end

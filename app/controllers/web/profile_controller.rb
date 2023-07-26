@@ -2,7 +2,7 @@
 
 module Web
   class ProfileController < Web::ApplicationController
-    include BulletinsIndex
+    include BulletinsCommon
 
     def index
       index_prepare

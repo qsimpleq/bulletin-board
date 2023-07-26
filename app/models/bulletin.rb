@@ -51,7 +51,7 @@ class Bulletin < ApplicationRecord
       transitions from: :under_moderation, to: :published
     end
 
-    event :decline do
+    event :reject do
       transitions from: :under_moderation, to: :rejected
     end
 
@@ -62,6 +62,7 @@ class Bulletin < ApplicationRecord
 
   scope :created_by, ->(user) { where(user_id: user.id) }
   scope :published, -> { where(state: 'published') }
+  scope :rejected, -> { where(state: 'rejected') }
   scope :under_moderation, -> { where(state: 'under_moderation') }
 
   def self.ransackable_attributes(_auth_object = nil)

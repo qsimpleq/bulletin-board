@@ -10,16 +10,19 @@ Rails.application.routes.draw do
     root 'bulletins#index'
 
     get 'admin', to: 'admin/bulletins#index'
-    scope '/admin', module: :admin do
-      resources :bulletins, only: :index, as: :admin_bulletins
+    namespace :admin do
+      resources :bulletins, only: :index do
+        member do
+          patch :publish
+          patch :reject
+        end
+      end
       resources :categories, except: %i[show]
     end
 
     resources :bulletins, except: %i[destroy] do
       member do
         patch :moderate
-        patch :publish
-        patch :decline
         patch :archive
       end
     end

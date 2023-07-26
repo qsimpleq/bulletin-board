@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-module BulletinsIndex
+module BulletinsCommon
+  private
+
   def index_prepare
     policy = BulletinPolicy::Scope.new(current_user, Bulletin)
     index_build_policy_options(policy)
@@ -25,7 +27,7 @@ module BulletinsIndex
 
     @bulletin_actions << :show if [profile_path, admin_bulletins_path].include?(request.path)
     @bulletin_actions.push(:edit, :moderate) if request.path == profile_path
-    @bulletin_actions.push(:publish, :decline) if request.path == admin_path && current_user.admin?
+    @bulletin_actions.push(:publish, :reject) if request.path == admin_path && current_user.admin?
     @bulletin_actions << :archive
   end
 
@@ -38,5 +40,27 @@ module BulletinsIndex
       current_path: request.path,
       profile_path:
     }
+  end
+
+  def check_policy
+    authorize @bulletin
+  end
+
+  def bulletin_params
+    params.require(:bulletin).permit(%i[category_id description image title])
+  end
+
+  def set_bulletin
+    @bulletin = Bulletin.includes(:category).find(params[:id])
+  end
+
+  def set_state
+    set_bulletin
+    if @bulletin&.method("may_#{action_name}?") && @bulletin.aasm.fire!(:"#{action_name}")
+      redirect_to request.referer, notice: t('.success')
+    else
+      flash[:error] = t('.error')
+      redirect_to request.referer
+    end
   end
 end

@@ -30,15 +30,15 @@ table[class="table table-borderless"]
 
               - if @bulletin_actions.include?(:publish) && bulletin.may_publish?
                 = link_to t('action.publish'),
-                        publish_bulletin_path(bulletin),
+                        publish_admin_bulletin_path(bulletin),
                         class: 'me-2',
                         data: { turbo_method: :patch, turbo_confirm: t('.confirm_publish') }
 
-              - if @bulletin_actions.include?(:decline) && bulletin.may_decline?
-                = link_to t('action.decline'),
-                        decline_bulletin_path(bulletin),
+              - if @bulletin_actions.include?(:reject) && bulletin.may_reject?
+                = link_to t('action.reject'),
+                        reject_admin_bulletin_path(bulletin),
                         class: 'me-2',
-                        data: { turbo_method: :patch, turbo_confirm: t('.confirm_decline') }
+                        data: { turbo_method: :patch, turbo_confirm: t('.confirm_reject') }
 
               = link_to t('action.archive'),
                       archive_bulletin_path(bulletin),
