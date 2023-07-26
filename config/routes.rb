@@ -22,7 +22,11 @@ Rails.application.routes.draw do
       resources :categories, except: %i[show]
     end
 
-    resources :bulletins, except: %i[destroy]
+    resources :bulletins, except: %i[destroy] do
+      member do
+        patch :archive, to: 'admin/bulletins#archive'
+      end
+    end
     get :profile, to: 'profile#index'
   end
 end

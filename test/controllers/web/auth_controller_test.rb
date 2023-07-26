@@ -2,6 +2,10 @@
 
 module Web
   class AuthControllerTest < ActionDispatch::IntegrationTest
+    setup do
+      @user_one = users(:one)
+    end
+
     test 'check github auth' do
       post auth_request_path('github')
 
@@ -13,8 +17,8 @@ module Web
         provider: 'github',
         uid: '12345',
         info: {
-          email: Faker::Internet.email,
-          name: Faker::Name.first_name
+          email: @user_one.email,
+          name: @user_one.name
         }
       }
 
