@@ -56,11 +56,12 @@ module BulletinsCommon
 
   def set_state
     set_bulletin
-    if @bulletin&.method("may_#{action_name}?") && @bulletin.aasm.fire!(:"#{action_name}")
-      redirect_to request.referer, notice: t('.success')
+    url = request.referer || request.path
+    if @bulletin.method("may_#{action_name}?") && @bulletin.aasm.fire!(:"#{action_name}")
+      redirect_to url, notice: t('.success')
     else
       flash[:error] = t('.error')
-      redirect_to request.referer
+      redirect_to url, status: :unprocessable_entity
     end
   end
 end

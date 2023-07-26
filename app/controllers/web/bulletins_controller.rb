@@ -4,9 +4,8 @@ module Web
   class BulletinsController < Web::ApplicationController
     include BulletinsCommon
 
-    after_action :check_policy, only: %i[show new create edit update destroy archive moderate]
+    after_action :check_policy, only: %i[show new create edit update destroy]
     before_action :set_bulletin, only: %i[show edit update destroy]
-    before_action :set_state, only: %i[archive moderate]
     before_action :set_categories, only: %i[new edit]
 
     def index
@@ -49,10 +48,6 @@ module Web
         render @bulletin, status: :unprocessable_entity
       end
     end
-
-    def archive; end
-
-    def moderate; end
 
     private
 

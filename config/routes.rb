@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :bulletins, only: :index do
         member do
+          patch :archive
+          patch :moderate
           patch :publish
           patch :reject
         end
@@ -20,13 +22,7 @@ Rails.application.routes.draw do
       resources :categories, except: %i[show]
     end
 
-    resources :bulletins, except: %i[destroy] do
-      member do
-        patch :moderate
-        patch :archive
-      end
-    end
-
+    resources :bulletins, except: %i[destroy]
     get :profile, to: 'profile#index'
   end
 end

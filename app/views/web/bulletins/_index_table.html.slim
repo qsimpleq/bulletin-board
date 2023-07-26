@@ -24,7 +24,7 @@ table[class="table table-borderless"]
             - if user_signed_in? && !bulletin.archived?
               - if @bulletin_actions.include?(:moderate) && bulletin.may_moderate?
                 = link_to t('action.moderate'),
-                        moderate_bulletin_path(bulletin),
+                        moderate_admin_bulletin_path(bulletin),
                         class: 'me-2',
                         data: { turbo_method: :patch }
 
@@ -41,6 +41,6 @@ table[class="table table-borderless"]
                         data: { turbo_method: :patch, turbo_confirm: t('.confirm_reject') }
 
               = link_to t('action.archive'),
-                      archive_bulletin_path(bulletin),
+                      archive_admin_bulletin_path(bulletin),
                       class: 'text-danger me-2',
                       data: { turbo_method: :patch, turbo_confirm: t('.confirm_archive') }

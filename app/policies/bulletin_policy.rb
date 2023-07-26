@@ -61,7 +61,7 @@ class BulletinPolicy < ApplicationPolicy
   end
 
   def reject?
-    quser&.admin?
+    user&.admin?
   end
 
   def archive?
