@@ -26,7 +26,7 @@ gem 'ancestry' # Ancestry allows rails ActiveRecord models to be organized as a 
 gem 'bootsnap', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'bootstrap'
 gem 'cocoon'
-gem 'faker', require: false
+gem 'faker'
 gem 'image_processing', '~> 1.2' # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'kaminari' # A pagination engine plugin for Rails 4+ and other modern frameworks
 gem 'omniauth'
