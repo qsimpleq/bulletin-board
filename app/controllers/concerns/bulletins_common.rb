@@ -20,7 +20,6 @@ module BulletinsCommon
     @bulletin_columns << :actions if user_signed_in? && current_user.admin?
   end
 
-  # rubocop:disable Metrics/AbcSize
   def index_build_actions
     @bulletin_actions = %i[]
     return @bulletin_actions unless @bulletin_columns.include?(:actions)
@@ -31,7 +30,6 @@ module BulletinsCommon
     @bulletin_actions << :archive
   end
 
-  # rubocop:enable Metrics/AbcSize
   def index_build_policy_options(policy)
     policy.options = {
       admin_bulletins_path:,
