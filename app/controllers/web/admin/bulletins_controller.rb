@@ -3,7 +3,6 @@
 module Web
   module Admin
     class BulletinsController < ApplicationController
-      # before_action :
       before_action :set_bulletin, only: %i[archive to_moderate publish reject]
 
       def index
@@ -16,8 +15,6 @@ module Web
       end
 
       def under_moderation
-        raise Pundit::NotAuthorizedError, t('pundit.default_admin') unless current_user&.admin?
-
         @q = Bulletin.under_moderation.includes(:user, :category).ransack(params[:q])
         @bulletins = @q.result.page(params[:page]).order(created_at: :desc)
         @bulletin_columns = %i[name created_at actions]

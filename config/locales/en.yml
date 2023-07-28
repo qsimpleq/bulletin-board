@@ -61,6 +61,8 @@ en:
     delete: Delete
     edit: Edit
     index: Index
+    log_in: Log In
+    log_out: Logout
     moderate: Moderate
     new: New
     publish: Publish
@@ -92,8 +94,6 @@ en:
       header:
         admin: Admin
         home: Home
-        log_in: Log In
-        log_out: Logout
         my_bulletins: My bulletins
   pundit:
     default: You need to be authorized user

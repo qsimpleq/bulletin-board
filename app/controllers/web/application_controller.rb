@@ -30,8 +30,9 @@ module Web
     def user_not_authorized(exception)
       error_message = exception.message
       error_message ||= signed_in? && !current_user.admin? ? t('pundit.default_admin') : t('pundit.default')
-      flash[:alert] = error_message
-      redirect_back(fallback_location: root_path)
+      flash[:error] = error_message
+
+      redirect_back_or_to root_path
     end
   end
 end

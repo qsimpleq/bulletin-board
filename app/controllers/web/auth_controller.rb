@@ -8,12 +8,13 @@ module Web
       user = User.find_by_provider_and_uid(auth) || User.create_with_omniauth(auth)
       session[:user_id] = user.id
 
-      redirect_to root_path, notice: t('.log_in')
+      redirect_to root_path, notice: t('action.log_in')
     end
 
     def destroy
       sign_out
-      redirect_to root_path, notice: t('.log_out')
+
+      redirect_back_or_to root_path, notice: t('actions.log_out')
     end
   end
 end
