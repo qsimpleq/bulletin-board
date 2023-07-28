@@ -9,7 +9,7 @@ module Web
       def index
         @categories = policy_scope(Category).page(params[:page]).where.not(name: nil)
         @category_columns = %i[id name]
-        @category_columns << :actions if user_signed_in? && current_user.admin?
+        @category_columns << :actions if signed_in? && current_user.admin?
 
         render 'web/admin/index'
       end

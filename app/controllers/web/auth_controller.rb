@@ -12,9 +12,7 @@ module Web
     end
 
     def destroy
-      return unless current_user
-
-      session[:user_id] = nil
+      sign_out
       redirect_to root_path, notice: t('.log_out')
     end
   end

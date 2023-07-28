@@ -21,7 +21,7 @@ table[class="table table-borderless"]
             - if @bulletin_actions.include?(:edit)
               = link_to t('action.edit'), edit_bulletin_path(bulletin), class: 'me-2'
 
-            - if user_signed_in? && !bulletin.archived?
+            - if signed_in? && !bulletin.archived?
               - if @bulletin_actions.include?(:moderate) && bulletin.may_moderate?
                 = link_to t('action.moderate'),
                         moderate_admin_bulletin_path(bulletin),

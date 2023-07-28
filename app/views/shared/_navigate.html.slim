@@ -8,7 +8,7 @@
       = link_to t('action.show'), entity, class: 'btn btn-primary me-1'
     - else
       = link_to t('action.back'), back_path(default_path: root_path), class: 'btn btn-primary me-1'
-      - if user_signed_in? && action_name == 'show'
+      - if signed_in? && action_name == 'show'
         = link_to t('action.edit'), public_send("edit_#{entity.class.to_s.downcase}_path", entity),
                                     class: 'btn btn-primary me-1'
         = link_to t('action.delete'), entity, \

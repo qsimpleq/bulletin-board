@@ -1,32 +1,13 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include AuthManager
   include Pundit::Authorization
-  helper_method %i[back_path current_user user_signed_in?]
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  helper_method %i[back_path current_user sign_in signed_in? sign_out]
+
   private
-
-  def user_not_authorized
-    flash[:alert] = user_signed_in? ? t('pundit.default_admin') : t('pundit.default')
-    redirect_back(fallback_location: root_path)
-  end
-
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
-  end
-
-  def user_signed_in?
-    current_user ? true : false
-  end
-
-  def authenticate_user!
-    return if user_signed_in?
-
-    flash[:error] = t('error.authenticate_user')
-
-    redirect_to root_path
-  end
 
   def back_path(**params)
     params[:action_name] ||= action_name
@@ -39,5 +20,10 @@ class ApplicationController < ActionController::Base
     else
       params[:default_path] || request.referer
     end
+  end
+
+  def user_not_authorized
+    flash[:alert] = signed_in? && !current_user.admin? ? t('pundit.default_admin') : t('pundit.default')
+    redirect_back(fallback_location: root_path)
   end
 end

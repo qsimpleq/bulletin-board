@@ -17,7 +17,7 @@ module BulletinsCommon
     @bulletin_columns = %i[name]
     @bulletin_columns << :state if request.path == profile_path || request.path == admin_bulletins_path
     @bulletin_columns << :created_at
-    @bulletin_columns << :actions if user_signed_in? && current_user.admin?
+    @bulletin_columns << :actions if signed_in? && current_user.admin?
   end
 
   def index_build_actions
