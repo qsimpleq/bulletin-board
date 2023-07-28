@@ -1,5 +1,5 @@
 linters:
   LineLength:
-    max: 120
+    max: 140
     exclude:
       - 'app/views/kaminari/**/*'

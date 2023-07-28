@@ -20,4 +20,12 @@ module AuthManager
   def signed_in?
     session[:user_id].present? && current_user.present?
   end
+
+  def auth_user!
+    raise Pundit::NotAuthorizedError, t('pundit.default') if current_user.blank?
+  end
+
+  def auth_user_admin!
+    raise Pundit::NotAuthorizedError, t('pundit.default_admin') unless current_user&.admin?
+  end
 end

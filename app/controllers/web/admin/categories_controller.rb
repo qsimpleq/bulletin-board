@@ -2,12 +2,11 @@
 
 module Web
   module Admin
-    class CategoriesController < Web::ApplicationController
-      after_action :check_policy, only: %i[new create edit update destroy]
+    class CategoriesController < ApplicationController
       before_action :set_category, only: %i[edit update destroy]
 
       def index
-        @categories = policy_scope(Category).page(params[:page]).where.not(name: nil)
+        @categories = Category.page(params[:page]).where.not(name: nil)
         @category_columns = %i[id name]
         @category_columns << :actions if signed_in? && current_user.admin?
 
@@ -16,12 +15,16 @@ module Web
 
       def new
         @category = Category.new
+        authorize @category
       end
 
-      def edit; end
+      def edit
+        authorize @category
+      end
 
       def create
         @category = Category.new(category_params)
+        authorize @category
 
         if @category.save
           redirect_to admin_categories_path, notice: t('.success')
@@ -31,6 +34,7 @@ module Web
       end
 
       def update
+        authorize @category
         if @category.update(category_params)
           redirect_to admin_categories_path, notice: t('.success')
         else
@@ -39,6 +43,7 @@ module Web
       end
 
       def destroy
+        authorize @category
         if @category.destroy
           redirect_to admin_categories_path, notice: t('.success')
         else
@@ -47,10 +52,6 @@ module Web
       end
 
       private
-
-      def check_policy
-        authorize @category
-      end
 
       def set_category
         @category = Category.find(params[:id])

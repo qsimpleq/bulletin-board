@@ -20,7 +20,7 @@ module Web
         @bulletin = Bulletin.create!(@attrs)
       end
 
-      test 'check transition to moderate' do
+      test 'check transition to to_moderate' do
         patch moderate_admin_bulletin_path(@bulletin)
 
         assert_response :redirect

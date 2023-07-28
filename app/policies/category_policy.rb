@@ -1,14 +1,6 @@
 # frozen_string_literal: true
 
 class CategoryPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      return unless user&.admin?
-
-      scope.all
-    end
-  end
-
   def index?
     user&.admin?
   end

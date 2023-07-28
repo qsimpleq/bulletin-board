@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   scope module: :web do
     root 'bulletins#index'
 
-    get 'admin', to: 'admin/bulletins#index'
+    get 'admin', to: 'admin/bulletins#under_moderation'
     namespace :admin do
       resources :bulletins, only: :index do
         member do
           patch :archive
-          patch :moderate
+          patch :to_moderate, as: 'moderate'
           patch :publish
           patch :reject
         end
@@ -24,7 +24,8 @@ Rails.application.routes.draw do
 
     resources :bulletins, except: %i[destroy] do
       member do
-        patch :archive, to: 'admin/bulletins#archive'
+        patch :archive
+        patch :to_moderate, as: 'moderate'
       end
     end
     get :profile, to: 'profile#index'

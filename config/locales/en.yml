@@ -29,7 +29,7 @@ bulletins: &bulletins
       created_at: Created
       name: Name
       state: State
-  moderate:
+  to_moderate:
     error: Bulletin could not be sent to moderation
     success: Bulletin was sent to moderation
   new:
