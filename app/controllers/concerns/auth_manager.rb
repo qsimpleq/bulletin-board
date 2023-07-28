@@ -25,16 +25,16 @@ module AuthManager
   end
 
   def auth_user!
-    if current_user.blank?
-      sign_out
-      raise Pundit::NotAuthorizedError, I18n.t('pundit.default')
-    end
+    return if current_user.present?
+
+    sign_out
+    raise Pundit::NotAuthorizedError, I18n.t('pundit.default')
   end
 
   def auth_user_admin!
-    unless current_user&.admin?
-      sign_out
-      raise Pundit::NotAuthorizedError, I18n.t('pundit.default_admin')
-    end
+    return if current_user&.admin?
+
+    sign_out
+    raise Pundit::NotAuthorizedError, I18n.t('pundit.default_admin')
   end
 end

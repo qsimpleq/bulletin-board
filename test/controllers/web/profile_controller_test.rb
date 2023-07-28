@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 module Web
@@ -9,8 +11,7 @@ module Web
     end
 
     test 'should get profile' do
-      @user_one = users(:one)
-      sign_in(@user_one)
+      sign_in(users(:one))
       get profile_url
 
       assert_response :success
