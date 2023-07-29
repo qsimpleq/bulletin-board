@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :bulletins, only: :index do
         member do
           patch :archive
-          patch :to_moderate, as: 'moderate'
+          patch :to_moderate, as: :moderate
           patch :publish
           patch :reject
         end
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :bulletins, except: %i[destroy] do
       member do
         patch :archive
-        patch :to_moderate, as: 'moderate'
+        patch :to_moderate, as: :moderate
       end
     end
     get :profile, to: 'profile#index'

@@ -35,7 +35,7 @@ module Web
 
       def to_moderate
         authorize @bulletin
-        if @bulletin.may_to_moderate? && @bulletin.aasm.fire!(:to_moderate)
+        if @bulletin.may_moderate? && @bulletin.aasm.fire!(:moderate)
           redirect_to back_path, notice: t('.success')
         else
           flash[:error] = t('.error')

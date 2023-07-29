@@ -22,9 +22,9 @@ table[class="table table-borderless"]
               = link_to t('action.edit'), edit_bulletin_path(bulletin), class: 'me-2'
 
             - if signed_in? && !bulletin.archived?
-              - if @bulletin_actions.include?(:to_moderate) && bulletin.may_to_moderate?
+              - if @bulletin_actions.include?(:moderate) && bulletin.may_moderate?
                 = link_to t('action.moderate'),
-                        current_page?(profile_path) ? to_moderate_bulletin_path(bulletin) : moderate_admin_bulletin_path(bulletin),
+                        current_page?(profile_path) ? moderate_bulletin_path(bulletin) : moderate_admin_bulletin_path(bulletin),
                         class: 'me-2',
                         data: { turbo_method: :patch }
 
