@@ -6,17 +6,16 @@ module Web
   class BulletinsControllerTest < ActionDispatch::IntegrationTest
     setup do
       @user_one = users(:one)
-      @bulletin = bulletins(:one)
+      @bulletin_one = bulletins(:one)
       sign_in(@user_one)
 
       image_path = Rails.root.join('test/fixtures/files/vehicle_car.jpg')
       @image_file = fixture_file_upload(image_path, 'image/jpeg')
-      @attrs = {
-        bulletin: { category_id: @bulletin.category_id,
-                    description: @bulletin.description,
-                    title: @bulletin.title,
-                    image: @image_file }
-      }
+      @attrs = { category_id: @bulletin_one.category_id,
+                 description: @bulletin_one.description,
+                 title: @bulletin_one.title,
+                 image: @image_file }
+      @bulletin = Bulletin.create(@attrs)
     end
 
     test 'should get index' do
@@ -39,7 +38,7 @@ module Web
 
     test 'should create bulletin' do
       assert_difference('Bulletin.count') do
-        post bulletins_url, params: @attrs
+        post bulletins_url, params: { bulletin: @attrs }
       end
 
       assert_redirected_to profile_url
@@ -52,9 +51,35 @@ module Web
     end
 
     test 'should update bulletin' do
-      patch bulletin_url(@bulletin), params: @attrs
+      patch bulletin_url(@bulletin), params: { bulletin: @attrs }
 
       assert_redirected_to profile_url
+    end
+
+    test 'transition to moderate' do
+      patch moderate_bulletin_path(@bulletin)
+
+      assert_response :redirect
+    end
+
+    test 'transition to archive' do
+      patch archive_bulletin_path(@bulletin)
+
+      assert_response :redirect
+    end
+
+    test 'anonymous transition to moderate' do
+      delete auth_logout_path
+      patch moderate_bulletin_path(@bulletin)
+
+      assert_redirected_to root_path
+    end
+
+    test 'anonymous transition to archive' do
+      delete auth_logout_path
+      patch archive_bulletin_path(@bulletin)
+
+      assert_redirected_to root_path
     end
   end
 end

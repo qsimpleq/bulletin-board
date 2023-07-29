@@ -17,10 +17,17 @@ module Web
                    description: @bulletin_one.description,
                    title: @bulletin_one.title,
                    image: @image_file }
-        @bulletin = Bulletin.create!(@attrs)
+        @bulletin = Bulletin.create(@attrs)
+        @bulletin.save
       end
 
-      test 'check transition to to_moderate' do
+      test 'check transition to archive' do
+        patch archive_admin_bulletin_path(@bulletin)
+
+        assert_response :redirect
+      end
+
+      test 'check transition to moderate' do
         patch moderate_admin_bulletin_path(@bulletin)
 
         assert_response :redirect
@@ -40,10 +47,32 @@ module Web
         assert_response :redirect
       end
 
-      test 'check transition to archive' do
+      test 'anonymous transition to archive' do
+        delete auth_logout_path
         patch archive_admin_bulletin_path(@bulletin)
 
-        assert_response :redirect
+        assert_redirected_to root_path
+      end
+
+      test 'anonymous transition to moderate' do
+        delete auth_logout_path
+        patch moderate_admin_bulletin_path(@bulletin)
+
+        assert_redirected_to root_path
+      end
+
+      test 'anonymous transition to reject' do
+        delete auth_logout_path
+        patch reject_admin_bulletin_path(@bulletin)
+
+        assert_redirected_to root_path
+      end
+
+      test 'anonymous transition to publish' do
+        delete auth_logout_path
+        patch publish_admin_bulletin_path(@bulletin)
+
+        assert_redirected_to root_path
       end
     end
   end
