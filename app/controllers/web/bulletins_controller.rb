@@ -7,7 +7,7 @@ module Web
 
     def index
       @q = Bulletin.published.includes(:user, :category).ransack(params[:q])
-      @bulletins = @q.result.page(params[:page]).order(created_at: :desc)
+      @bulletins = @q.result.order(created_at: :desc).page(params[:page])
     end
 
     def show; end

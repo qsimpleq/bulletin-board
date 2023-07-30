@@ -6,7 +6,7 @@ module Web
       before_action :set_category, only: %i[edit update destroy]
 
       def index
-        @categories = Category.page(params[:page]).where.not(name: nil)
+        @categories = Category.where.not(name: nil).order(name: :asc).page(params[:page])
         @category_columns = %i[id name]
         @category_columns << :actions if signed_in? && current_user.admin?
 

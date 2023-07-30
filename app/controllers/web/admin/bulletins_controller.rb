@@ -7,7 +7,7 @@ module Web
 
       def index
         @q = Bulletin.includes(:user, :category).ransack(params[:q])
-        @bulletins = @q.result.page(params[:page]).order(created_at: :desc)
+        @bulletins = @q.result.order(created_at: :desc).page(params[:page])
         @bulletin_columns = %i[name state created_at actions]
         @bulletin_actions = %i[show archive]
 
@@ -16,7 +16,7 @@ module Web
 
       def under_moderation
         @q = Bulletin.under_moderation.includes(:user, :category).ransack(params[:q])
-        @bulletins = @q.result.page(params[:page]).order(created_at: :desc)
+        @bulletins = @q.result.order(created_at: :desc).page(params[:page])
         @bulletin_columns = %i[name created_at actions]
         @bulletin_actions = %i[publish reject archive]
 
