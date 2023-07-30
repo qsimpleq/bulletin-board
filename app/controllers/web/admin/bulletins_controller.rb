@@ -14,7 +14,7 @@ module Web
 
       def archive
         authorize @bulletin
-        if @bulletin.may_archive? && @bulletin.aasm.fire!(:archive)
+        if @bulletin.may_archive? && @bulletin.archive!
           redirect_to back_path, notice: t('.success')
         else
           flash[:error] = t('.error')
@@ -24,7 +24,7 @@ module Web
 
       def to_moderate
         authorize @bulletin
-        if @bulletin.may_moderate? && @bulletin.aasm.fire!(:moderate)
+        if @bulletin.may_moderate? && @bulletin.moderate!
           redirect_to back_path, notice: t('.success')
         else
           flash[:error] = t('.error')
@@ -34,7 +34,7 @@ module Web
 
       def reject
         authorize @bulletin
-        if @bulletin.may_reject? && @bulletin.aasm.fire!(:reject)
+        if @bulletin.may_reject? && @bulletin.reject!
           redirect_to back_path, notice: t('.success')
         else
           flash[:error] = t('.error')
@@ -44,7 +44,7 @@ module Web
 
       def publish
         authorize @bulletin
-        if @bulletin.may_publish? && @bulletin.aasm.fire!(:publish)
+        if @bulletin.may_publish? && @bulletin.publish!
           redirect_to back_path, notice: t('.success')
         else
           flash[:error] = t('.error')

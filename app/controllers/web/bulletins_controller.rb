@@ -54,7 +54,7 @@ module Web
 
     def archive
       authorize @bulletin
-      if @bulletin.may_archive? && @bulletin.aasm.fire!(:archive)
+      if @bulletin.may_archive? && @bulletin.archive!
         redirect_to back_path, notice: t('.success')
       else
         flash[:error] = t('.error')
@@ -64,7 +64,7 @@ module Web
 
     def to_moderate
       authorize @bulletin
-      if @bulletin.may_moderate? && @bulletin.aasm.fire!(:moderate)
+      if @bulletin.may_moderate? && @bulletin.moderate!
         redirect_to back_path, notice: t('.success')
       else
         flash[:error] = t('.error')
