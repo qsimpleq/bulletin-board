@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     root 'bulletins#index'
 
-    get 'admin', to: 'admin/bulletins#under_moderation'
+    get 'admin', to: 'admin/home#index'
     namespace :admin do
       resources :bulletins, only: :index do
         member do

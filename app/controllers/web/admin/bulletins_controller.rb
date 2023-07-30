@@ -12,13 +12,6 @@ module Web
         render 'web/admin/index'
       end
 
-      def under_moderation
-        @q = Bulletin.under_moderation.includes(:user, :category).ransack(params[:q])
-        @bulletins = @q.result.order(created_at: :desc).page(params[:page])
-
-        render 'web/admin/index'
-      end
-
       def archive
         authorize @bulletin
         if @bulletin.may_archive? && @bulletin.aasm.fire!(:archive)
