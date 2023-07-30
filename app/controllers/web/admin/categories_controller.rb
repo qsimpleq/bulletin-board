@@ -7,8 +7,6 @@ module Web
 
       def index
         @categories = Category.where.not(name: nil).order(name: :asc).page(params[:page])
-        @category_columns = %i[id name]
-        @category_columns << :actions if signed_in? && current_user.admin?
 
         render 'web/admin/index'
       end

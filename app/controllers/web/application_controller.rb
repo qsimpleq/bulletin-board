@@ -6,7 +6,7 @@ module Web
     include Pundit::Authorization
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-    helper_method %i[back_path current_user sign_in signed_in? sign_out table_column_visible?]
+    helper_method %i[back_path current_user sign_in signed_in? sign_out]
 
     private
 
@@ -23,16 +23,12 @@ module Web
       end
     end
 
-    def table_column_visible?(column, controller = controller_name)
-      instance_variable_get("@#{controller.classify.underscore}_columns").include?(column)
-    end
-
     def user_not_authorized(exception)
       error_message = exception.message
       error_message ||= signed_in? && !current_user.admin? ? t('pundit.default_admin') : t('pundit.default')
       flash[:error] = error_message
 
-      redirect_back_or_to root_path
+      redirect_to root_path
     end
   end
 end

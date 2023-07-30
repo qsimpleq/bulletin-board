@@ -41,6 +41,16 @@
       - if current_page?(bulletins_path) || current_page?(root_path)
         = render 'web/bulletins/index_grid'
       - else
+        - if current_page?(admin_path)
+          - @bulletin_columns = %i[name created_at actions]
+          - @bulletin_actions = %i[publish reject archive]
+        - elsif current_page?(admin_bulletins_path)
+          - @bulletin_columns = %i[name state created_at actions]
+          - @bulletin_actions = %i[show archive]
+        - elsif current_page?(profile_path)
+          - @bulletin_columns = %i[name state created_at actions]
+          - @bulletin_actions = %i[show edit to_moderate archive]
+
         = render 'web/bulletins/index_table'
 
       = paginate @bulletins
