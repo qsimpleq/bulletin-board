@@ -24,14 +24,14 @@ module AuthManager
     session[:user_id].present? && current_user.present?
   end
 
-  def auth_user!
+  def require_signed_in_user!
     return if current_user.present?
 
     sign_out
     raise Pundit::NotAuthorizedError, I18n.t('pundit.default')
   end
 
-  def auth_user_admin!
+  def require_admin_user!
     return if current_user&.admin?
 
     sign_out

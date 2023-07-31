@@ -2,6 +2,7 @@
 
 module Web
   class BulletinsController < Web::ApplicationController
+    before_action :require_signed_in_user!, only: %i[new create edit update destroy archive to_moderate]
     before_action :set_bulletin, only: %i[show edit update destroy archive to_moderate]
     before_action :set_categories, only: %i[new edit]
 
@@ -74,7 +75,7 @@ module Web
     end
 
     def set_categories
-      @categories = Category.where.not(name: nil)
+      @categories = Category.all
     end
 
     def bulletin_params

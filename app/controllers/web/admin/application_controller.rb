@@ -3,7 +3,7 @@
 module Web
   module Admin
     class ApplicationController < Web::ApplicationController
-      before_action :auth_user_admin!
+      before_action :require_admin_user!
     end
   end
 end

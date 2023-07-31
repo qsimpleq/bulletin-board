@@ -2,8 +2,8 @@
 
 module Web
   class ProfileController < Web::ApplicationController
+    before_action :require_signed_in_user!, only: :index
     def index
-      auth_user!
       @q = Bulletin.created_by(current_user).includes(:user, :category).ransack(params[:q])
       @bulletins = @q.result.order(created_at: :desc).page(params[:page])
 
