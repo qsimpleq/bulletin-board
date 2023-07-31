@@ -8,8 +8,6 @@ module Web
       def index
         @q = Bulletin.includes(:user, :category).ransack(params[:q])
         @bulletins = @q.result.order(created_at: :desc).page(params[:page])
-
-        render 'web/admin/index'
       end
 
       def archive

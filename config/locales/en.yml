@@ -1,4 +1,14 @@
 ---
+bulletins_table: &bulletins_table
+  columns:
+    actions: Actions
+    created_at: Created
+    name: Name
+    state: State
+  confirm_archive: Are you sure want to archive bulletin?
+  confirm_decline: Are you sure want to decline bulletin?
+  confirm_publish: Are you sure want to publish bulletin?
+  confirm_reject: Are you sure want to reject bulletin?
 bulletins: &bulletins
   archive:
     error: Bulletin could not be archived
@@ -17,18 +27,8 @@ bulletins: &bulletins
     search_state: by state
     search_title: Search by bulletin title
     title: Bulletins
-    title_moderation: Bulletins to moderation
     title_my: My Bulletins
-  index_table:
-    confirm_archive: Are you sure want to archive bulletin?
-    confirm_decline: Are you sure want to decline bulletin?
-    confirm_publish: Are you sure want to publish bulletin?
-    confirm_reject: Are you sure want to reject bulletin?
-    columns:
-      actions: Actions
-      created_at: Created
-      name: Name
-      state: State
+  index_table: *bulletins_table
   to_moderate:
     error: Bulletin could not be sent to moderation
     success: Bulletin was sent to moderation
@@ -90,6 +90,10 @@ en:
   error:
     authenticate_user: Can't authenticate user
   layouts:
+    admin:
+      link_all: All bulletins
+      link_categories: All categories
+      link_moderation: Bulletins to moderation
     shared:
       header:
         admin: Admin
@@ -100,10 +104,8 @@ en:
     default_admin: You need to be admin
   web:
     admin:
-      index:
-        link_all: All bulletins
-        link_categories: All categories
-        link_moderation: Bulletins to moderation
+      bulletins:
+        *bulletins
       categories:
         create:
           error: Category could not be created
@@ -125,8 +127,8 @@ en:
         update:
           error: Category could not be updated
           success: Category was successfully updated
-      bulletins:
-        *bulletins
+      home:
+        index: *bulletins_table
     auth:
       callback:
         log_in: Signed in!

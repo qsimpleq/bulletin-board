@@ -7,8 +7,6 @@ module Web
 
       def index
         @categories = Category.all.order(name: :asc).page(params[:page])
-
-        render 'web/admin/index'
       end
 
       def new

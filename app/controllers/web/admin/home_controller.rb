@@ -8,7 +8,6 @@ module Web
                              .includes(:user, :category)
                              .order(created_at: :desc)
                              .page(params[:page])
-        render 'web/admin/index'
       end
     end
   end
