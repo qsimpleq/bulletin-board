@@ -13,16 +13,12 @@ module Web
 
       def new
         @category = Category.new
-        authorize @category
       end
 
-      def edit
-        authorize @category
-      end
+      def edit; end
 
       def create
         @category = Category.new(category_params)
-        authorize @category
 
         if @category.save
           redirect_to admin_categories_path, notice: t('.success')
@@ -32,7 +28,6 @@ module Web
       end
 
       def update
-        authorize @category
         if @category.update(category_params)
           redirect_to admin_categories_path, notice: t('.success')
         else
@@ -41,7 +36,6 @@ module Web
       end
 
       def destroy
-        authorize @category
         if @category.destroy
           redirect_to admin_categories_path, notice: t('.success')
         else

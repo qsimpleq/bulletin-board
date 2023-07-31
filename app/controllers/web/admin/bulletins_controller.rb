@@ -13,7 +13,6 @@ module Web
       end
 
       def archive
-        authorize @bulletin
         if @bulletin.may_archive? && @bulletin.archive!
           redirect_to back_path, notice: t('.success')
         else
@@ -23,7 +22,6 @@ module Web
       end
 
       def to_moderate
-        authorize @bulletin
         if @bulletin.may_moderate? && @bulletin.moderate!
           redirect_to back_path, notice: t('.success')
         else
@@ -33,7 +31,6 @@ module Web
       end
 
       def reject
-        authorize @bulletin
         if @bulletin.may_reject? && @bulletin.reject!
           redirect_to back_path, notice: t('.success')
         else
@@ -43,7 +40,6 @@ module Web
       end
 
       def publish
-        authorize @bulletin
         if @bulletin.may_publish? && @bulletin.publish!
           redirect_to back_path, notice: t('.success')
         else
