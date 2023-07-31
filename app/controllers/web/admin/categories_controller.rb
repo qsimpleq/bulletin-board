@@ -6,7 +6,7 @@ module Web
       before_action :set_category, only: %i[edit update destroy]
 
       def index
-        @categories = Category.where.not(name: nil).order(name: :asc).page(params[:page])
+        @categories = Category.all.order(name: :asc).page(params[:page])
 
         render 'web/admin/index'
       end
