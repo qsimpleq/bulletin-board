@@ -7,14 +7,13 @@ module Web
     setup do
       @user_one = users(:one)
       @bulletin_one = bulletins(:one)
+
       sign_in(@user_one)
 
-      image_path = Rails.root.join('test/fixtures/files/vehicle_car.jpg')
-      @image_file = fixture_file_upload(image_path, 'image/jpeg')
       @attrs = { category_id: @bulletin_one.category_id,
                  description: @bulletin_one.description,
                  title: @bulletin_one.title,
-                 image: @image_file }
+                 image: load_image('vehicle_car.jpg') }
       @bulletin = Bulletin.create(@attrs)
     end
 

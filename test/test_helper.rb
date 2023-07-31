@@ -11,6 +11,11 @@ require 'rails/test_help'
 
 OmniAuth.config.test_mode = true
 
+def load_image(name, type = 'image/jpeg')
+  image_path = Rails.root.join("test/fixtures/files/#{name}")
+  fixture_file_upload(image_path, type)
+end
+
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
