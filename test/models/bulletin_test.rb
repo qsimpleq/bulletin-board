@@ -24,7 +24,25 @@
 require 'test_helper'
 
 class BulletinTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @bulletin_one = bulletins(:one)
+  end
+
+  test "should do transition archive" do
+    assert @bulletin_one.archive!
+  end
+
+  test "should do transition moderate" do
+    assert @bulletin_one.moderate!
+  end
+
+  test "should do transition publish" do
+    @bulletin_one.moderate!
+    assert @bulletin_one.publish!
+  end
+
+  test "should do transition reject" do
+    @bulletin_one.moderate!
+    assert @bulletin_one.reject!
+  end
 end
