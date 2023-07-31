@@ -27,8 +27,7 @@ module Web
       if @bulletin.save
         redirect_to profile_path, notice: t('.success')
       else
-        flash[:error] = t('.error')
-        render :new, status: :unprocessable_entity
+        render :new, status: :unprocessable_entity, alert: t('.error')
       end
     end
 
@@ -37,8 +36,7 @@ module Web
       if @bulletin.update(bulletin_params)
         redirect_to profile_path, notice: t('.success')
       else
-        flash[:error] = t('.error')
-        render :edit, status: :unprocessable_entity
+        render :edit, status: :unprocessable_entity, alert: t('.error')
       end
     end
 
@@ -47,8 +45,7 @@ module Web
       if @bulletin.destroy
         redirect_to @bulletin, notice: t('.success')
       else
-        flash[:error] = t('.error')
-        render @bulletin, status: :unprocessable_entity
+        render @bulletin, status: :unprocessable_entity, alert: t('.error')
       end
     end
 
@@ -57,8 +54,7 @@ module Web
       if @bulletin.may_archive? && @bulletin.archive!
         redirect_to back_path, notice: t('.success')
       else
-        flash[:error] = t('.error')
-        redirect_to back_path, status: :unprocessable_entity
+        redirect_to back_path, status: :unprocessable_entity, alert: t('.error')
       end
     end
 
@@ -67,8 +63,7 @@ module Web
       if @bulletin.may_moderate? && @bulletin.moderate!
         redirect_to back_path, notice: t('.success')
       else
-        flash[:error] = t('.error')
-        redirect_to back_path, status: :unprocessable_entity
+        redirect_to back_path, status: :unprocessable_entity, alert: t('.error')
       end
     end
 

@@ -16,8 +16,7 @@ module Web
         if @bulletin.may_archive? && @bulletin.archive!
           redirect_to back_path, notice: t('.success')
         else
-          flash[:error] = t('.error')
-          redirect_to back_path, status: :unprocessable_entity
+          redirect_to back_path, status: :unprocessable_entity, alert: t('.error')
         end
       end
 
@@ -25,8 +24,7 @@ module Web
         if @bulletin.may_moderate? && @bulletin.moderate!
           redirect_to back_path, notice: t('.success')
         else
-          flash[:error] = t('.error')
-          redirect_to back_path, status: :unprocessable_entity
+          redirect_to back_path, status: :unprocessable_entity, alert: t('.error')
         end
       end
 
@@ -34,8 +32,7 @@ module Web
         if @bulletin.may_reject? && @bulletin.reject!
           redirect_to back_path, notice: t('.success')
         else
-          flash[:error] = t('.error')
-          redirect_to back_path, status: :unprocessable_entity
+          redirect_to back_path, status: :unprocessable_entity, alert: t('.error')
         end
       end
 
@@ -43,8 +40,7 @@ module Web
         if @bulletin.may_publish? && @bulletin.publish!
           redirect_to back_path, notice: t('.success')
         else
-          flash[:error] = t('.error')
-          redirect_to back_path, status: :unprocessable_entity
+          redirect_to back_path, status: :unprocessable_entity, alert: t('.error')
         end
       end
 

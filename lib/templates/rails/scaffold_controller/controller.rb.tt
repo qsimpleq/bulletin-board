@@ -19,8 +19,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     if @<%= orm_instance.save %>
       redirect_to <%= redirect_resource_name %>, notice: t('.success')
     else
-      flash[:error] = t('.error')
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, alert: t('.error')
     end
   end
 
@@ -28,8 +27,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     if @<%= orm_instance.update("#{singular_table_name}_params") %>
       redirect_to <%= redirect_resource_name %>, notice: t('.success')
     else
-      flash[:error] = t('.error')
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity, alert: t('.error')
     end
   end
 
@@ -37,8 +35,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     if @<%= orm_instance.destroy %>
       redirect_to <%= redirect_resource_name %>, notice: t('.success')
     else
-      flash[:error] = t('.error')
-      render @<%= singular_table_name %>, status: :unprocessable_entity
+      render @<%= singular_table_name %>, status: :unprocessable_entity, alert: t('.error')
     end
   end
 
