@@ -28,21 +28,23 @@ class BulletinTest < ActiveSupport::TestCase
     @bulletin_one = bulletins(:one)
   end
 
-  test "should do transition archive" do
+  test 'should do transition archive' do
     assert @bulletin_one.archive!
   end
 
-  test "should do transition moderate" do
+  test 'should do transition moderate' do
     assert @bulletin_one.moderate!
   end
 
-  test "should do transition publish" do
+  test 'should do transition publish' do
     @bulletin_one.moderate!
+
     assert @bulletin_one.publish!
   end
 
-  test "should do transition reject" do
+  test 'should do transition reject' do
     @bulletin_one.moderate!
+
     assert @bulletin_one.reject!
   end
 end
