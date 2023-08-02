@@ -34,10 +34,15 @@ module Web
       end
 
       def destroy
-        if @category.destroy
+        if @category.bulletins.none? && @category.destroy
           redirect_to admin_categories_path, notice: t('.success')
         else
-          render @category, status: :unprocessable_entity
+          error = if @category.bulletins.any?
+                    t('.error_exists')
+                  else
+                    t('.error')
+                  end
+          redirect_to admin_categories_path, status: :unprocessable_entity, alert: error
         end
       end
 

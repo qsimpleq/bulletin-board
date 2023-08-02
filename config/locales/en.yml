@@ -112,6 +112,7 @@ en:
           success: Category was successfully created
         destroy:
           error: Category could not be destroyed
+          error_exists: 'Сategory cannot be destroyed because there are bulletins related to it'
           success: Category was successfully destroyed
         edit:
           title: Edit category

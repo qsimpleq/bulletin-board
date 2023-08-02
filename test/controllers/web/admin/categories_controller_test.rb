@@ -43,9 +43,15 @@ module Web
         assert_redirected_to admin_categories_url
       end
 
+      test 'should get unprocessable_entity on destroy category' do
+        delete admin_category_url(@category)
+
+        assert_response :unprocessable_entity
+      end
+
       test 'should destroy category' do
         assert_difference('Category.count', -1) do
-          delete admin_category_url(@category)
+          delete admin_category_url(Category.find_by(name: 'three'))
         end
 
         assert_redirected_to admin_categories_url

@@ -6,7 +6,7 @@ module Web
       @user_one = users(:one)
     end
 
-    test 'check github auth' do
+    test 'should github auth' do
       post auth_request_path('github')
 
       assert_response :redirect
@@ -32,6 +32,12 @@ module Web
 
       assert user
       assert_predicate self, :signed_in?
+    end
+
+    test 'should destroy' do
+      delete auth_logout_url
+
+      assert_response :redirect
     end
   end
 end
