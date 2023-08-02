@@ -61,9 +61,6 @@ class Bulletin < ApplicationRecord
   end
 
   scope :created_by, ->(user) { where(user_id: user.id) }
-  scope :published, -> { where(state: 'published') }
-  scope :rejected, -> { where(state: 'rejected') }
-  scope :under_moderation, -> { where(state: 'under_moderation') }
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[category_id state title]
