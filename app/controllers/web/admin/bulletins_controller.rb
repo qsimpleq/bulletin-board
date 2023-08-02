@@ -3,7 +3,7 @@
 module Web
   module Admin
     class BulletinsController < ApplicationController
-      before_action :set_bulletin, only: %i[archive to_moderate publish reject]
+      before_action :set_bulletin, only: %i[archive publish reject]
 
       def index
         @q = Bulletin.includes(:user, :category).ransack(params[:q])
@@ -12,14 +12,6 @@ module Web
 
       def archive
         if @bulletin.may_archive? && @bulletin.archive!
-          redirect_to back_path, notice: t('.success')
-        else
-          redirect_to back_path, status: :unprocessable_entity, alert: t('.error')
-        end
-      end
-
-      def to_moderate
-        if @bulletin.may_moderate? && @bulletin.moderate!
           redirect_to back_path, notice: t('.success')
         else
           redirect_to back_path, status: :unprocessable_entity, alert: t('.error')

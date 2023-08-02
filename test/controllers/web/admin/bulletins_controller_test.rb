@@ -24,12 +24,6 @@ module Web
         assert_response :redirect
       end
 
-      test 'check transition to moderate' do
-        patch moderate_admin_bulletin_path(@bulletin)
-
-        assert_response :redirect
-      end
-
       test 'check transition to reject' do
         @bulletin.update(state: 'under_moderation')
         patch reject_admin_bulletin_path(@bulletin)
@@ -47,13 +41,6 @@ module Web
       test 'anonymous transition to archive' do
         delete auth_logout_path
         patch archive_admin_bulletin_path(@bulletin)
-
-        assert_redirected_to root_path
-      end
-
-      test 'anonymous transition to moderate' do
-        delete auth_logout_path
-        patch moderate_admin_bulletin_path(@bulletin)
 
         assert_redirected_to root_path
       end

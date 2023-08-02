@@ -14,7 +14,6 @@ Rails.application.routes.draw do
       resources :bulletins, only: :index do
         member do
           patch :archive
-          patch :to_moderate, as: :moderate
           patch :publish
           patch :reject
         end
