@@ -32,18 +32,4 @@ class User < ApplicationRecord
             uniqueness: { scope: [:uid] },
             inclusion: { in: %w[github] }
   validates :uid, presence: true
-
-  def self.create_with_omniauth(auth)
-    create!(
-      admin: true,
-      email: auth['info']['email'],
-      name: auth['info']['name'],
-      provider: auth['provider'],
-      uid: auth['uid']
-    )
-  end
-
-  def self.find_by_provider_and_uid(auth)
-    where(provider: auth['provider'], uid: auth['uid'])&.first
-  end
 end

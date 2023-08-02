@@ -133,6 +133,7 @@ en:
     auth:
       callback:
         log_in: Signed in!
+        error: Can't authorize user
       destroy:
         log_out: Log out!
     bulletins:
