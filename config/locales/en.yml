@@ -9,8 +9,6 @@ en:
     create: Create
     delete: Delete
     edit: Edit
-    sign_in: Sign in
-    sign_out: Logout
     moderate: Moderate
     new: New
     publish: Publish
@@ -18,6 +16,8 @@ en:
     reset: Reset
     save: Save
     show: Show
+    sign_in: Sign in
+    sign_out: Logout
     submit: Submit
     update: Update
   activerecord:
@@ -93,7 +93,8 @@ en:
           success: Category was successfully created
         destroy:
           error: Category could not be destroyed
-          error_exists: Сategory cannot be destroyed because there are bulletins related to it
+          error_exists: Сategory cannot be destroyed because there are bulletins related
+            to it
           success: Category was successfully destroyed
         edit:
           title: Edit category

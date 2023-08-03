@@ -1,5 +1,4 @@
 ---
-
 ru:
   action:
     add: Добавить
@@ -10,8 +9,6 @@ ru:
     create: Создать
     delete: Удалиль
     edit: Редактировать
-    sign_in: Войти
-    sign_out: Выйти
     moderate: Модерировать
     new: Новый
     publish: Опубликовать
@@ -19,6 +16,8 @@ ru:
     reset: Сброс
     save: Сохранить
     show: Показать
+    sign_in: Войти
+    sign_out: Выйти
     submit: Искать
     update: Обновить
   activerecord:
@@ -38,40 +37,40 @@ ru:
   app_name: Доска объявлений
   datetime:
     distance_in_words:
-      half_a_minute: "полминуты"
-      less_than_x_seconds:
-        one: "меньше секунды"
-        other: "меньще %{count} секунд"
-      x_seconds:
-        one: "1 секунда"
-        other: "%{count} секунд"
-      less_than_x_minutes:
-        one: "меньше минуты"
-        other: "меньше %{count} минут"
-      x_minutes:
-        one: "1 минута"
-        other: "%{count} минут"
       about_x_hours:
-        one: "около 1 часа"
-        other: "около %{count} часов"
-      x_days:
-        one: "1 день"
-        other: "%{count} дней"
+        one: около 1 часа
+        other: около %{count} часов
       about_x_months:
-        one: "около 1 месяца"
-        other: "около %{count} месяцев"
-      x_months:
-        one: "1 месяц"
-        other: "%{count} месяцев"
+        one: около 1 месяца
+        other: около %{count} месяцев
       about_x_years:
-        one: "около 1 года"
-        other: "около %{count} лет"
-      over_x_years:
-        one: "болше 1 года"
-        other: "больше %{count} лет"
+        one: около 1 года
+        other: около %{count} лет
       almost_x_years:
-        one: "почти 1 год"
-        other: "почти %{count} лет"
+        one: почти 1 год
+        other: почти %{count} лет
+      half_a_minute: полминуты
+      less_than_x_minutes:
+        one: меньше минуты
+        other: меньше %{count} минут
+      less_than_x_seconds:
+        one: меньше секунды
+        other: меньще %{count} секунд
+      over_x_years:
+        one: болше 1 года
+        other: больше %{count} лет
+      x_days:
+        one: 1 день
+        other: "%{count} дней"
+      x_minutes:
+        one: 1 минута
+        other: "%{count} минут"
+      x_months:
+        one: 1 месяц
+        other: "%{count} месяцев"
+      x_seconds:
+        one: 1 секунда
+        other: "%{count} секунд"
   error:
     authenticate_user: Не удается аутентифицировать пользователя
   layouts:
@@ -106,10 +105,10 @@ ru:
         new:
           title: Добавить объявление
         publish:
-          error:  Объявление не может быть опубликовано
+          error: Объявление не может быть опубликовано
           success: Объявление было опубликовано
         reject:
-          error:  Объявление не может быть возвращено
+          error: Объявление не может быть возвращено
           success: Объявление было возвращено
         search_form:
           search_category: Выберите категорию
@@ -119,10 +118,10 @@ ru:
           error: Состояние объявления не может быть обновлено
           success: Состояние объявления обновлено
         to_moderate:
-          error:  Объявление не может быть отправлено на модерацию
+          error: Объявление не может быть отправлено на модерацию
           success: Объявление отправлено на модерацию
         update:
-          error:  Объявление не может быть обновлено
+          error: Объявление не может быть обновлено
           success: Объявление обновлено
       categories:
         create:
@@ -130,7 +129,8 @@ ru:
           success: Категория создана
         destroy:
           error: Категория не может быть удалена
-          error_exists: Категория не может быть удалена, потому что с ней связаны объявления
+          error_exists: Категория не может быть удалена, потому что с ней связаны
+            объявления
           success: Категория удалена
         edit:
           title: Редактировать категорию
