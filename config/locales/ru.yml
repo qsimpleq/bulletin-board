@@ -1,0 +1,213 @@
+---
+
+ru:
+  action:
+    add: Добавить
+    archive: Архивировать
+    back: Назад
+    confirm: Вы уверены?
+    confirm_delete: Вы уверены, что хотите удалить?
+    create: Создать
+    delete: Удалиль
+    edit: Редактировать
+    sign_in: Войти
+    sign_out: Выйти
+    moderate: Модерировать
+    new: Новый
+    publish: Опубликовать
+    reject: Вернуть
+    reset: Сброс
+    save: Сохранить
+    show: Показать
+    submit: Искать
+    update: Обновить
+  activerecord:
+    attributes:
+      category:
+        name: Имя
+    errors:
+      models:
+        user:
+          attributes:
+            provider:
+              inclusion: "%{value} не поддерживается"
+    models:
+      category:
+        one: Категория
+        other: Категорий
+  app_name: Доска объявлений
+  datetime:
+    distance_in_words:
+      half_a_minute: "полминуты"
+      less_than_x_seconds:
+        one: "меньше секунды"
+        other: "меньще %{count} секунд"
+      x_seconds:
+        one: "1 секунда"
+        other: "%{count} секунд"
+      less_than_x_minutes:
+        one: "меньше минуты"
+        other: "меньше %{count} минут"
+      x_minutes:
+        one: "1 минута"
+        other: "%{count} минут"
+      about_x_hours:
+        one: "около 1 часа"
+        other: "около %{count} часов"
+      x_days:
+        one: "1 день"
+        other: "%{count} дней"
+      about_x_months:
+        one: "около 1 месяца"
+        other: "около %{count} месяцев"
+      x_months:
+        one: "1 месяц"
+        other: "%{count} месяцев"
+      about_x_years:
+        one: "около 1 года"
+        other: "около %{count} лет"
+      over_x_years:
+        one: "болше 1 года"
+        other: "больше %{count} лет"
+      almost_x_years:
+        one: "почти 1 год"
+        other: "почти %{count} лет"
+  error:
+    authenticate_user: Не удается аутентифицировать пользователя
+  layouts:
+    admin:
+      link_all: Все объявления
+      link_categories: Все категории
+      link_moderation: Объявления на модерацию
+    shared:
+      header:
+        admin: Админка
+        home: Главная
+        my_bulletins: Мои объявления
+  pundit:
+    default: Вы должны быть авторизованным пользователем
+    default_admin: Вам нужно быть администратором
+  web:
+    admin:
+      bulletins:
+        archive:
+          error: Объявление не может быть заархивировано
+          success: Объявление отправлено в архив
+        create:
+          error: Объявление не может быть создано
+          success: Объявление создано
+        destroy:
+          error: Объявление не может быть удалено
+          success: Объявление удалено
+        edit:
+          title: Редактировать объявление
+        index:
+          title: Объявление
+        new:
+          title: Добавить объявление
+        publish:
+          error:  Объявление не может быть опубликовано
+          success: Объявление было опубликовано
+        reject:
+          error:  Объявление не может быть возвращено
+          success: Объявление было возвращено
+        search_form:
+          search_category: Выберите категорию
+          search_state: по состоянию
+          search_title: Искать по названию объявления
+        set_state:
+          error: Состояние объявления не может быть обновлено
+          success: Состояние объявления обновлено
+        to_moderate:
+          error:  Объявление не может быть отправлено на модерацию
+          success: Объявление отправлено на модерацию
+        update:
+          error:  Объявление не может быть обновлено
+          success: Объявление обновлено
+      categories:
+        create:
+          error: Не удалось создать категорию
+          success: Категория создана
+        destroy:
+          error: Категория не может быть удалена
+          error_exists: Категория не может быть удалена, потому что с ней связаны объявления
+          success: Категория удалена
+        edit:
+          title: Редактировать категорию
+        index:
+          columns:
+            actions: Действия
+            id: ID
+            name: Название
+          link_new: Добавить категорию
+          title: Категории
+        new:
+          title: Добавить категорию
+        update:
+          error: Категорию нельзя обновить
+          success: Категория обновлена
+      home:
+        index:
+          columns:
+            actions: Действия
+            created_at: Создано
+            name: Имя
+            state: Состояние
+          confirm_archive: Вы уверены, что хотите отправить в архив объявление?
+          confirm_publish: Вы уверены, что хотите опубликовать объявление?
+          confirm_reject: Вы уверены, что хотите вернуть объявление?
+      shared:
+        bulletins_table:
+          columns:
+            actions: Действия
+            created_at: Создано
+            name: Имя
+            state: Состояние
+          confirm_archive: Вы уверены, что хотите отправить в архив объявление?
+          confirm_publish: Вы уверены, что хотите опубликовать объявление?
+          confirm_reject: Вы уверены, что хотите вернуть объявление?
+    auth:
+      callback:
+        error: Не могу авторизовать пользователя
+        sign_in: Успешно
+      destroy:
+        sign_out: Успешно
+    bulletins:
+      archive:
+        error: Объявление не может быть отправлено в архив
+        success: Объявление было отправлено в архив
+      create:
+        error: Объявление не может быть создано
+        success: Объявление было создано
+      destroy:
+        error: Объявление не может быть удалено
+        success: Объявление было удалено
+      edit:
+        title: Редактировать объявление
+      index:
+        title: Объявление
+      new:
+        title: Добавить объявление
+      publish:
+        error: Объявление не может быть опубликовано
+        success: Объявление было опубликовано
+      reject:
+        error: Объявление не может быть возвращено
+        success: Объявление было возвращено
+      search_form:
+        search_category: Выбрать категорию
+        search_state: По состоянию
+        search_title: Искать по названию объявления
+      set_state:
+        error: Состояние объявления не может быть обновлено
+        success: Состояние объявления обновлено
+      to_moderate:
+        error: Объявление не может быть отправлено на модерацию
+        success: Объявление отправлено на модерацию
+      update:
+        error: Объявление не может быть обновлено
+        success: Объявление обновлено
+    profile:
+      index:
+        add: Добавить объявление
+        title: Мои объявления

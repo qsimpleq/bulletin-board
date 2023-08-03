@@ -11,7 +11,7 @@ module Web
       user.provider = auth_params[:provider]
       if user.save
         sign_in user
-        redirect_to root_path, notice: t('action.log_in')
+        redirect_to root_path, notice: t('action.sign_in')
       else
         redirect_to root_path, alert: t('.error')
       end
@@ -20,7 +20,7 @@ module Web
     def destroy
       sign_out
 
-      redirect_back_or_to root_path, notice: t('action.log_out')
+      redirect_back_or_to root_path, notice: t('action.sign_out')
     end
 
     private

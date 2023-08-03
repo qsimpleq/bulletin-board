@@ -3,18 +3,14 @@ en:
   action:
     add: Add
     archive: Archive
-    authenticate_user:
     back: Back
-    comment: Comment
     confirm: Are you sure?
     confirm_delete: Are you sure want to delete?
     create: Create
-    decline: Decline
     delete: Delete
     edit: Edit
-    index: Index
-    log_in: Log In
-    log_out: Logout
+    sign_in: Sign in
+    sign_out: Logout
     moderate: Moderate
     new: New
     publish: Publish
@@ -70,7 +66,6 @@ en:
           title: Edit bulletin
         index:
           title: Bulletins
-          title_my: My Bulletins
         new:
           title: Add bulletin
         publish:
@@ -98,8 +93,7 @@ en:
           success: Category was successfully created
         destroy:
           error: Category could not be destroyed
-          error_exists: Сategory cannot be destroyed because there are bulletins related
-            to it
+          error_exists: Сategory cannot be destroyed because there are bulletins related to it
           success: Category was successfully destroyed
         edit:
           title: Edit category
@@ -123,7 +117,6 @@ en:
             name: Name
             state: State
           confirm_archive: Are you sure want to archive bulletin?
-          confirm_decline: Are you sure want to decline bulletin?
           confirm_publish: Are you sure want to publish bulletin?
           confirm_reject: Are you sure want to reject bulletin?
       shared:
@@ -134,15 +127,14 @@ en:
             name: Name
             state: State
           confirm_archive: Are you sure want to archive bulletin?
-          confirm_decline: Are you sure want to decline bulletin?
           confirm_publish: Are you sure want to publish bulletin?
           confirm_reject: Are you sure want to reject bulletin?
     auth:
       callback:
         error: Can't authorize user
-        log_in: Signed in!
+        sign_in: Signed in!
       destroy:
-        log_out: Log out!
+        sign_out: Sign out!
     bulletins:
       archive:
         error: Bulletin could not be archived
@@ -157,7 +149,6 @@ en:
         title: Edit bulletin
       index:
         title: Bulletins
-        title_my: My Bulletins
       new:
         title: Add bulletin
       publish:
