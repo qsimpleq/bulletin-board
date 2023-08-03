@@ -9,7 +9,7 @@ setup:
 setup-first-time:
 	bundle install --jobs 4 --retry 3
 	yarn install
-	env DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:drop db:create db:migrate db:seed assets:precompile
+	env DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:drop db:create db:migrate
 
 dev:
 	bin/dev
