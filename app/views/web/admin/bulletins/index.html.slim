@@ -1,1 +1,11 @@
-= render template: 'web/bulletins/index'
+.row
+  .p-3.p-lg-5.pt-lg-0
+    .mb-4
+      h2 = t('.title')
+      hr
+    = render 'web/bulletins/search_form'
+    .row.mt-2
+      - @bulletin_columns = %i[name state created_at actions]
+      - @bulletin_actions = %i[show archive]
+      = render 'web/admin/shared/bulletins_table'
+      = paginate @bulletins

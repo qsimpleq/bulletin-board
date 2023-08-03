@@ -1,52 +1,4 @@
 ---
-bulletins_table: &bulletins_table
-  columns:
-    actions: Actions
-    created_at: Created
-    name: Name
-    state: State
-  confirm_archive: Are you sure want to archive bulletin?
-  confirm_decline: Are you sure want to decline bulletin?
-  confirm_publish: Are you sure want to publish bulletin?
-  confirm_reject: Are you sure want to reject bulletin?
-bulletins: &bulletins
-  archive:
-    error: Bulletin could not be archived
-    success: Bulletin was archived
-  create:
-    error: Bulletin could not be created
-    success: Bulletin was created
-  destroy:
-    error: Bulletin could not be destroyed
-    success: Bulletin was successfully destroyed
-  edit:
-    title: Edit bulletin
-  index:
-    add: Add bulletin
-    search_category: Select category
-    search_state: by state
-    search_title: Search by bulletin title
-    title: Bulletins
-    title_my: My Bulletins
-  index_table: *bulletins_table
-  to_moderate:
-    error: Bulletin could not be sent to moderation
-    success: Bulletin was sent to moderation
-  new:
-    title: New bulletin
-  publish:
-    error: Bulletin could not be published
-    success: Bulletin was published
-  reject:
-    error: Bulletin could not be rejected
-    success: Bulletin was rejected
-  set_state:
-    error: Bulletin state could not be updated
-    success: Bulletin state was successfully updated
-  update:
-    error: Bulletin could not be updated
-    success: Bulletin was successfully updated
-
 en:
   action:
     add: Add
@@ -105,14 +57,49 @@ en:
   web:
     admin:
       bulletins:
-        *bulletins
+        archive:
+          error: Bulletin could not be archived
+          success: Bulletin was archived
+        create:
+          error: Bulletin could not be created
+          success: Bulletin was created
+        destroy:
+          error: Bulletin could not be destroyed
+          success: Bulletin was successfully destroyed
+        edit:
+          title: Edit bulletin
+        index:
+          title: Bulletins
+          title_my: My Bulletins
+        new:
+          title: Add bulletin
+        publish:
+          error: Bulletin could not be published
+          success: Bulletin was published
+        reject:
+          error: Bulletin could not be rejected
+          success: Bulletin was rejected
+        search_form:
+          search_category: Select category
+          search_state: by state
+          search_title: Search by bulletin title
+        set_state:
+          error: Bulletin state could not be updated
+          success: Bulletin state was successfully updated
+        to_moderate:
+          error: Bulletin could not be sent to moderation
+          success: Bulletin was sent to moderation
+        update:
+          error: Bulletin could not be updated
+          success: Bulletin was successfully updated
       categories:
         create:
           error: Category could not be created
           success: Category was successfully created
         destroy:
           error: Category could not be destroyed
-          error_exists: 'Сategory cannot be destroyed because there are bulletins related to it'
+          error_exists: Сategory cannot be destroyed because there are bulletins related
+            to it
           success: Category was successfully destroyed
         edit:
           title: Edit category
@@ -129,12 +116,70 @@ en:
           error: Category could not be updated
           success: Category was successfully updated
       home:
-        index: *bulletins_table
+        index:
+          columns:
+            actions: Actions
+            created_at: Created
+            name: Name
+            state: State
+          confirm_archive: Are you sure want to archive bulletin?
+          confirm_decline: Are you sure want to decline bulletin?
+          confirm_publish: Are you sure want to publish bulletin?
+          confirm_reject: Are you sure want to reject bulletin?
+      shared:
+        bulletins_table:
+          columns:
+            actions: Actions
+            created_at: Created
+            name: Name
+            state: State
+          confirm_archive: Are you sure want to archive bulletin?
+          confirm_decline: Are you sure want to decline bulletin?
+          confirm_publish: Are you sure want to publish bulletin?
+          confirm_reject: Are you sure want to reject bulletin?
     auth:
       callback:
-        log_in: Signed in!
         error: Can't authorize user
+        log_in: Signed in!
       destroy:
         log_out: Log out!
     bulletins:
-      *bulletins
+      archive:
+        error: Bulletin could not be archived
+        success: Bulletin was archived
+      create:
+        error: Bulletin could not be created
+        success: Bulletin was created
+      destroy:
+        error: Bulletin could not be destroyed
+        success: Bulletin was successfully destroyed
+      edit:
+        title: Edit bulletin
+      index:
+        title: Bulletins
+        title_my: My Bulletins
+      new:
+        title: Add bulletin
+      publish:
+        error: Bulletin could not be published
+        success: Bulletin was published
+      reject:
+        error: Bulletin could not be rejected
+        success: Bulletin was rejected
+      search_form:
+        search_category: Select category
+        search_state: by state
+        search_title: Search by bulletin title
+      set_state:
+        error: Bulletin state could not be updated
+        success: Bulletin state was successfully updated
+      to_moderate:
+        error: Bulletin could not be sent to moderation
+        success: Bulletin was sent to moderation
+      update:
+        error: Bulletin could not be updated
+        success: Bulletin was successfully updated
+    profile:
+      index:
+        add: Add bulletin
+        title: My bulletins

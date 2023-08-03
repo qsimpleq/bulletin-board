@@ -6,8 +6,6 @@ module Web
     def index
       @q = Bulletin.created_by(current_user).includes(:user, :category).ransack(params[:q])
       @bulletins = @q.result.order(created_at: :desc).page(params[:page])
-
-      render 'web/bulletins/index'
     end
   end
 end
