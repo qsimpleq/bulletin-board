@@ -2,14 +2,14 @@
 ru:
   action:
     add: Добавить
-    archive: Архивировать
+    archive: В архив
     back: Назад
     confirm: Вы уверены?
     confirm_delete: Вы уверены, что хотите удалить?
     create: Создать
-    delete: Удалиль
+    delete: Удалить
     edit: Редактировать
-    moderate: Модерировать
+    moderate: На модерацию
     new: Новый
     publish: Опубликовать
     reject: Вернуть
@@ -18,10 +18,15 @@ ru:
     show: Показать
     sign_in: Войти
     sign_out: Выйти
-    submit: Искать
+    submit_search: Искать
     update: Обновить
   activerecord:
     attributes:
+      bulletin:
+        category: Категория
+        description: Описание
+        image: Фотография
+        title: Заголовок
       category:
         name: Имя
     errors:
@@ -31,6 +36,9 @@ ru:
             provider:
               inclusion: "%{value} не поддерживается"
     models:
+      bulletin:
+        one: Объявление
+        other: Объявлений
       category:
         one: Категория
         other: Категорий
@@ -73,6 +81,11 @@ ru:
         other: "%{count} секунд"
   error:
     authenticate_user: Не удается аутентифицировать пользователя
+  helpers:
+    submit:
+      bulletin:
+        create: Создать объявление
+        update: Сохранить объявление
   layouts:
     admin:
       link_all: Все объявления
@@ -103,13 +116,14 @@ ru:
         index:
           title: Объявление
         new:
+          submit: Создать
           title: Добавить объявление
         publish:
           error: Объявление не может быть опубликовано
-          success: Объявление было опубликовано
+          success: Объявление было успешно опубликовано
         reject:
           error: Объявление не может быть возвращено
-          success: Объявление было возвращено
+          success: Объявление было успешно возвращено
         search_form:
           search_category: Выберите категорию
           search_state: по состоянию
@@ -153,9 +167,9 @@ ru:
             created_at: Создано
             name: Имя
             state: Состояние
-          confirm_archive: Вы уверены, что хотите отправить в архив объявление?
-          confirm_publish: Вы уверены, что хотите опубликовать объявление?
-          confirm_reject: Вы уверены, что хотите вернуть объявление?
+          confirm_archive: Подтвердить архивацию?
+          confirm_publish: Подтвердить публикацию?
+          confirm_reject: Подтвердить возврат?
       shared:
         bulletins_table:
           columns:
@@ -163,9 +177,9 @@ ru:
             created_at: Создано
             name: Имя
             state: Состояние
-          confirm_archive: Вы уверены, что хотите отправить в архив объявление?
-          confirm_publish: Вы уверены, что хотите опубликовать объявление?
-          confirm_reject: Вы уверены, что хотите вернуть объявление?
+          confirm_archive: Подтвердить архивацию?
+          confirm_publish: Подтвердить публикацию?
+          confirm_reject: Подтвердить возврат?
     auth:
       callback:
         error: Не могу авторизовать пользователя
@@ -174,14 +188,14 @@ ru:
         sign_out: Успешно
     bulletins:
       archive:
-        error: Объявление не может быть отправлено в архив
-        success: Объявление было отправлено в архив
+        error: Объявление не может быть заархивировано
+        success: Объявление было успешно отправлено в заархивировано
       create:
         error: Объявление не может быть создано
-        success: Объявление было создано
+        success: Объявление было успешно создано
       destroy:
         error: Объявление не может быть удалено
-        success: Объявление было удалено
+        success: Объявление было успешно удалено
       edit:
         title: Редактировать объявление
       index:
@@ -190,10 +204,10 @@ ru:
         title: Добавить объявление
       publish:
         error: Объявление не может быть опубликовано
-        success: Объявление было опубликовано
+        success: Объявление было успешно опубликовано
       reject:
         error: Объявление не может быть возвращено
-        success: Объявление было возвращено
+        success: Объявление было успешно возвращено
       search_form:
         search_category: Выбрать категорию
         search_state: По состоянию

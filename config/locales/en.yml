@@ -18,7 +18,7 @@ en:
     show: Show
     sign_in: Sign in
     sign_out: Logout
-    submit: Submit
+    submit_search: Search
     update: Update
   activerecord:
     attributes:
