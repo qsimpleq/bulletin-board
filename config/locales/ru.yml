@@ -23,12 +23,12 @@ ru:
   activerecord:
     attributes:
       bulletin:
-        category: Категория
+        category_id: Категория
         description: Описание
         image: Фотография
         title: Заголовок
       category:
-        name: Имя
+        name: Название
     errors:
       models:
         user:
@@ -90,7 +90,7 @@ ru:
     admin:
       link_all: Все объявления
       link_categories: Все категории
-      link_moderation: Объявления на модерацию
+      link_moderation: Объявления на модерации
     shared:
       header:
         admin: Админка
@@ -114,7 +114,12 @@ ru:
         edit:
           title: Редактировать объявление
         index:
-          title: Объявление
+          title: Объявления
+          columns:
+            actions: Действия
+            created_at: Дата создания
+            name: Название
+            state: Состояние
         new:
           submit: Создать
           title: Добавить объявление
@@ -164,18 +169,8 @@ ru:
         index:
           columns:
             actions: Действия
-            created_at: Создано
-            name: Имя
-            state: Состояние
-          confirm_archive: Подтвердить архивацию?
-          confirm_publish: Подтвердить публикацию?
-          confirm_reject: Подтвердить возврат?
-      shared:
-        bulletins_table:
-          columns:
-            actions: Действия
-            created_at: Создано
-            name: Имя
+            created_at: Дата создания
+            name: Название
             state: Состояние
           confirm_archive: Подтвердить архивацию?
           confirm_publish: Подтвердить публикацию?
@@ -224,4 +219,9 @@ ru:
     profile:
       index:
         add: Добавить объявление
+        columns:
+          actions: Действия
+          created_at: Дата создания
+          name: Название
+          state: Состояние
         title: Мои объявления

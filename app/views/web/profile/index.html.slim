@@ -4,26 +4,47 @@
       h2 = t('.title')
       hr
 
-      = link_to t('.add'), new_bulletin_path
+    = link_to t('.add'), new_bulletin_path
 
-      .p-3.bg-light
-        = search_form_for @q, url: request.path, method: :get do |f|
-          .row.my-2
-            .col-6
-              = f.input :title_cont, label: false
-              small.form-text.text-muted = t('web.bulletins.search_form.search_title')
-            .col-4
-              = f.input :category_id_eq,
-                      as: :select,
-                      collection: Category.pluck(:name, :id),
-                      label: false
-              small.form-text.text-muted = t('web.bulletins.search_form.search_category')
-            .col-2
-              = f.submit t('action.submit_search'), class: 'btn btn-primary me-2'
-              = link_to t('action.reset'), request.path, class: 'btn btn-outline-primary'
+    = search_form_for @q, url: request.path, method: :get do |f|
+      .row.my-2
+        .col-6
+          = f.input :title_cont,
+                  label: false,
+                  hint: t('web.bulletins.search_form.search_title')
+        .col-3
+          .form-group.mb-3.select.required.q_state_eq
+            = f.input :state_eq,
+                    as: :select,
+                    collection: ['', *Bulletin.states], selected: params[:q] ? params[:q][:state_eq] : nil,
+                    label: false,
+                    hint: t('web.bulletins.search_form.search_state')
+        .col-3
+          = f.submit t('action.submit_search'), class: 'btn btn-primary me-2'
+          = link_to t('action.reset'), request.path, class: 'btn btn-outline-primary'
 
     .row.mt-2
-      - @bulletin_columns = %i[name state created_at actions]
-      - @bulletin_actions = %i[show edit moderate archive]
-      = render 'web/admin/shared/bulletins_table'
+      table[class="table table-borderless"]
+        thead
+          th = t('.columns.name')
+          th = t('.columns.state')
+          th = t('.columns.created_at')
+          th = t('.columns.actions')
+
+        tbody
+          - @bulletins.each do |bulletin|
+            tr
+              td = bulletin.title
+              td = bulletin.state
+              td = time_ago_in_words(bulletin.created_at.to_time)
+              td
+                = link_to t('action.show'), bulletin_path(bulletin), class: 'me-2'
+                = link_to t('action.edit'), edit_bulletin_path(bulletin), class: 'me-2'
+                - if bulletin.may_moderate?
+                  = link_to t('action.moderate'), moderate_bulletin_path(bulletin), class: 'me-2',
+                          data: { turbo_method: :patch }
+                - if bulletin.may_archive?
+                  = link_to t('action.archive'), archive_bulletin_path(bulletin), class: 'text-danger me-2',
+                          data: { turbo_method: :patch, turbo_confirm: t('.confirm_archive') }
+
       = paginate @bulletins

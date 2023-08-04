@@ -120,16 +120,6 @@ en:
           confirm_archive: Are you sure want to archive bulletin?
           confirm_publish: Are you sure want to publish bulletin?
           confirm_reject: Are you sure want to reject bulletin?
-      shared:
-        bulletins_table:
-          columns:
-            actions: Actions
-            created_at: Created
-            name: Name
-            state: State
-          confirm_archive: Are you sure want to archive bulletin?
-          confirm_publish: Are you sure want to publish bulletin?
-          confirm_reject: Are you sure want to reject bulletin?
     auth:
       callback:
         error: Can't authorize user

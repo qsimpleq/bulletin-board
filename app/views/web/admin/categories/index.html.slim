@@ -1,29 +1,24 @@
 .row
-  .p-3.p-lg-5.pt-lg-0
-    .mb-4
-      h2 = t('.title')
+  h2.mb-4 = t('.title')
+  = link_to t('.link_new'), new_admin_category_path
 
-      hr
+  .row.mt-2
+    table#categories[class="table table-borderless"]
+      thead
+        th = t('.columns.id')
+        th = t('.columns.name')
+        th = t('.columns.actions')
 
-      = link_to t('.link_new'), new_admin_category_path
+      tbody
+        - @categories.each do |category|
+          tr
+            td = category.id
+            td = category.name
+            td
+              = link_to t('action.edit'), edit_admin_category_path(category), class: 'me-1'
+              = link_to t('action.delete'),
+                      admin_category_path(category),
+                      class: 'text-danger me-1',
+                      data: { turbo_method: :delete, turbo_confirm: t('action.confirm') }
 
-      .row.mt-2
-        table#categories[class="table table-borderless"]
-          thead
-            th = t('.columns.id')
-            th = t('.columns.name')
-            th = t('.columns.actions')
-
-          tbody
-            - @categories.each do |category|
-              tr
-                td = category.id
-                td = category.name
-                td
-                  = link_to t('action.edit'), edit_admin_category_path(category), class: 'me-2'
-                  = link_to t('action.delete'),
-                          admin_category_path(category),
-                          class: 'text-danger me-2',
-                          data: { turbo_method: :delete, turbo_confirm: t('action.confirm') }
-
-        = paginate @categories
+    = paginate @categories
