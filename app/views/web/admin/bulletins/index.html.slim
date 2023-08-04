@@ -26,7 +26,7 @@
           - @bulletins.each do |bulletin|
             tr
               td = bulletin.title
-              td = bulletin.state
+              td = t("aasm.states.#{bulletin.state}")
               td = time_ago_in_words(bulletin.created_at.to_time)
               td
                 = link_to t('action.show'), bulletin_path(bulletin), class: 'me-1'

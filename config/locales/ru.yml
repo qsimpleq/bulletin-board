@@ -1,5 +1,12 @@
 ---
 ru:
+  aasm:
+    states:
+      draft: Черновик
+      under_moderation: На модерации
+      published: Опубликовано
+      rejected: Возвращено
+      archived: В архиве
   action:
     add: Добавить
     archive: В архив
