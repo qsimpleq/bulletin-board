@@ -37,4 +37,12 @@ module AuthManager
     sign_out
     raise Pundit::NotAuthorizedError, I18n.t('pundit.default_admin')
   end
+
+  def user_not_authorized(exception)
+    error_message = exception.message
+    error_message ||= signed_in? && !current_user.admin? ? t('pundit.default_admin') : t('pundit.default')
+    flash[:error] = error_message
+
+    redirect_to root_path
+  end
 end

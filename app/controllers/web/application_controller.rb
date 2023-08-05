@@ -22,13 +22,5 @@ module Web
         params[:default_path] || request.referer || request.path
       end
     end
-
-    def user_not_authorized(exception)
-      error_message = exception.message
-      error_message ||= signed_in? && !current_user.admin? ? t('pundit.default_admin') : t('pundit.default')
-      flash[:error] = error_message
-
-      redirect_to root_path
-    end
   end
 end
