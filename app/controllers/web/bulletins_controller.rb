@@ -4,7 +4,7 @@ module Web
   class BulletinsController < Web::ApplicationController
     before_action :require_signed_in_user!, only: %i[new create edit update destroy archive to_moderate]
     before_action :set_bulletin, only: %i[show edit update destroy archive to_moderate]
-    before_action :set_categories, only: %i[new edit]
+    before_action :set_categories, only: %i[new create edit update]
 
     def index
       @q = Bulletin.published.includes(:user, :category).ransack(params[:q])

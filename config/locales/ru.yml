@@ -30,7 +30,7 @@ ru:
   activerecord:
     attributes:
       bulletin:
-        category_id: Категория
+        category: Категория
         description: Описание
         image: Фотография
         title: Заголовок
@@ -38,6 +38,22 @@ ru:
         name: Название
     errors:
       models:
+        bulletin:
+          attributes:
+            image:
+              blank: должна быть прикреплена
+            category:
+              required: не может отсутствовать
+            description:
+              blank: не может быть пустым
+              too_short: недостаточной длины
+            title:
+              blank: не может быть пустым
+              too_short: недостаточной длины
+        category:
+          attributes:
+            name:
+              blank: не может быть пустым
         user:
           attributes:
             provider:
