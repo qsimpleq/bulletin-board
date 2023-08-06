@@ -2,11 +2,11 @@
 ru:
   aasm:
     states:
+      archived: В архиве
       draft: Черновик
-      under_moderation: На модерации
       published: Опубликовано
       rejected: Возвращено
-      archived: В архиве
+      under_moderation: На модерации
   action:
     add: Добавить
     archive: В архив
@@ -93,6 +93,9 @@ ru:
       bulletin:
         create: Создать объявление
         update: Сохранить объявление
+      category:
+        create: Создать категорию
+        update: Сохранить категорию
   layouts:
     admin:
       link_all: Все объявления
@@ -106,6 +109,14 @@ ru:
   pundit:
     default: Вы должны быть авторизованным пользователем
     default_admin: Вам нужно быть администратором
+  simple_form:
+    error_notification:
+      default_message: 'Пожалуйста, просмотрите следующие проблемы:'
+    'no': Нет
+    required:
+      mark: "*"
+      text: обязательный
+    'yes': Да
   web:
     admin:
       bulletins:
@@ -121,12 +132,13 @@ ru:
         edit:
           title: Редактировать объявление
         index:
-          title: Объявления
           columns:
             actions: Действия
             created_at: Дата создания
             name: Название
             state: Состояние
+          confirm_archive: Подтвердить архивацию?
+          title: Объявления
         new:
           submit: Создать
           title: Добавить объявление
@@ -231,4 +243,5 @@ ru:
           created_at: Дата создания
           name: Название
           state: Состояние
+        confirm_archive: Подтвердить архивацию?
         title: Мои объявления
