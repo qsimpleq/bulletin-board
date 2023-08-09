@@ -1,12 +1,12 @@
 .PHONY: setup setup-first-time deploy-railway-app dev envfile erb2slim git-precommit-check
 .PHONY: lint lint-rubocop lint-templates test test-coverage test-lint lint-test
 
-setup:
+setup: envfile
 	bundle install --jobs 4 --retry 3
 	yarn install
 	bundle exec rails db:create db:migrate assets:precompile
 
-setup-first-time:
+setup-first-time: envfile
 	bundle install --jobs 4 --retry 3
 	yarn install
 	env DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rails db:drop db:create db:migrate
