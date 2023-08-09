@@ -28,6 +28,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resource :profile, to: 'profile#index'
+    resource :profile, only: :show
   end
 end

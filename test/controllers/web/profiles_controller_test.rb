@@ -3,7 +3,7 @@
 require 'test_helper'
 
 module Web
-  class ProfileControllerTest < ActionDispatch::IntegrationTest
+  class ProfilesControllerTest < ActionDispatch::IntegrationTest
     test 'should redirect unregistered user to root' do
       get profile_url
 
