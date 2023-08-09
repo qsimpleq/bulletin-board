@@ -11,50 +11,56 @@ module Web
         sign_in(@user_one)
       end
 
-      test 'should get index' do
+      test '#index' do
         get admin_categories_url
 
         assert_response :success
       end
 
-      test 'should get new' do
+      test '#new' do
         get new_admin_category_url
 
         assert_response :success
       end
 
-      test 'should create category' do
-        assert_difference('Category.count') do
-          post admin_categories_url, params: { category: { name: @category.name } }
-        end
+      test '#create' do
+        name = 'new_name'
+        post admin_categories_url, params: { category: { name: } }
 
         assert_redirected_to admin_categories_url
+
+        assert Category.find_by(name:)
       end
 
-      test 'should get edit' do
+      test '#edit' do
         get edit_admin_category_url(@category)
 
         assert_response :success
       end
 
-      test 'should update category' do
-        patch admin_category_url(@category), params: { category: { name: @category.name } }
+      test '#update' do
+        name = 'new_name'
+        patch admin_category_url(@category), params: { category: { name: } }
 
         assert_redirected_to admin_categories_url
+
+        @category.reload
+
+        assert { @category.name == name }
       end
 
-      test 'should get unprocessable_entity on destroy category' do
+      test '#destroy with unprocessable_entity if bulletins linked' do
         delete admin_category_url(@category)
 
         assert_response :unprocessable_entity
       end
 
-      test 'should destroy category' do
-        assert_difference('Category.count', -1) do
-          delete admin_category_url(Category.find_by(name: 'three'))
-        end
+      test '#destroy' do
+        delete admin_category_url(Category.find_by(name: 'three'))
 
         assert_redirected_to admin_categories_url
+
+        assert_not Category.find_by(name: 'three')
       end
     end
   end

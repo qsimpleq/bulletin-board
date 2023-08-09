@@ -1,43 +1,38 @@
 # frozen_string_literal: true
 
+require 'test_helper'
+
 module Web
   class AuthControllerTest < ActionDispatch::IntegrationTest
     setup do
       @user_one = users(:one)
     end
 
-    test 'should github auth' do
+    test '#request :github' do
       post auth_request_path('github')
 
-      assert_response :redirect
+      assert_redirected_to callback_auth_path(:github)
     end
 
-    test 'create' do
-      auth_hash = {
-        provider: 'github',
-        uid: '12345',
-        info: {
-          email: @user_one.email,
-          name: @user_one.name
-        }
-      }
+    test '#callback sign_up' do
+      user = User.new(email: 'new@email.com', name: 'new')
+      sign_in(user)
 
-      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash::InfoHash.new(auth_hash)
+      assert_redirected_to root_path
 
-      get callback_auth_url('github')
-
-      assert_response :redirect
-
-      user = User.find_by!(email: auth_hash[:info][:email].downcase)
-
-      assert user
-      assert_predicate self, :signed_in?
+      assert User.find_by(email: user.email)
+      assert { signed_in? }
     end
 
-    test 'should destroy' do
+    test '#callback sign_in' do
+      sign_in(@user_one)
+      assert { signed_in? }
+    end
+
+    test '#destroy' do
       delete auth_logout_url
 
-      assert_response :redirect
+      assert_redirected_to root_path
     end
   end
 end
