@@ -18,16 +18,16 @@ Rails.application.routes.draw do
           patch :reject
         end
       end
-      resources :categories, except: %i[show]
+      resources :categories, only: %i[index new create edit update destroy]
     end
 
-    resources :bulletins, except: %i[destroy] do
+    resources :bulletins, only: %i[index new create edit update show] do
       member do
         patch :archive
         patch :to_moderate, as: :moderate
       end
     end
 
-    get :profile, to: 'profile#index'
+    resource :profile, to: 'profile#index'
   end
 end
