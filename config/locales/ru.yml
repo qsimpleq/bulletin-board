@@ -251,8 +251,8 @@ ru:
       update:
         error: Объявление не может быть обновлено
         success: Объявление обновлено
-    profile:
-      index:
+    profiles:
+      show:
         add: Добавить объявление
         columns:
           actions: Действия
