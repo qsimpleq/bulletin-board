@@ -6,7 +6,7 @@ module Web
       before_action :set_category, only: %i[edit update destroy]
 
       def index
-        @categories = Category.all.order(name: :asc).page(params[:page])
+        @categories = Category.order(name: :asc).page(params[:page])
       end
 
       def new
