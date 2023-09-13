@@ -1,6 +1,6 @@
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/qsimpleq/rails-project-65/workflows/hexlet-check/badge.svg)](https://github.com/qsimpleq/rails-project-65/actions)
-[![CI](https://github.com/qsimpleq/rails-project-65/actions/workflows/ci.yml/badge.svg)](https://github.com/qsimpleq/rails-project-65/actions/workflows/ci.yml)
+[![Actions Status](https://github.com/qsimpleq/bulletin-board/workflows/hexlet-check/badge.svg)](https://github.com/qsimpleq/bulletin-board/actions)
+[![CI](https://github.com/qsimpleq/bulletin-board/actions/workflows/ci.yml/badge.svg)](https://github.com/qsimpleq/bulletin-board/actions/workflows/ci.yml)
 
 # Bulletin board
 Simple way to publish your bulletins and share with others.
